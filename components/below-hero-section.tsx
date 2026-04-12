@@ -37,7 +37,6 @@ export default function BelowHeroSection() {
     if (!isTouch) return
 
     const ctas = Array.from(document.querySelectorAll<HTMLElement>(".btn.btn-primary"))
-      .filter((el) => !el.closest("#hero"))
 
     if (ctas.length === 0) return
 
