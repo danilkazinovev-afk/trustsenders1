@@ -97,7 +97,10 @@ export default function ServiceCards() {
                 tabIndex={0}
                 aria-expanded={isActive}
                 className={cls}
-                style={isActive ? { ...card.glow, background: card.bgActive } : undefined}
+                style={{
+                  ["--svc-color" as string]: card.glow.borderColor,
+                  ...(isActive ? { ...card.glow, background: card.bgActive } : undefined),
+                } as React.CSSProperties}
                 {...(!isMobile
                   ? {
                       onMouseEnter: () => setActive(i),

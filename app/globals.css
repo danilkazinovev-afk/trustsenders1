@@ -147,6 +147,13 @@ a, button { -webkit-tap-highlight-color: transparent; }
   box-shadow: 0 0 24px rgba(249, 115, 22, 0.5), 0 0 48px rgba(249, 115, 22, 0.25), 0 0 80px rgba(249, 115, 22, 0.12);
 }
 .btn-primary.in-view { background-position: right; }
+
+/* Mobile: auto-run the sweep (no hover) */
+@media (hover: none) and (pointer: coarse) {
+  .btn-primary {
+    background-position: left;
+  }
+}
 .btn-ghost     { background: #fff; color: var(--text-primary); border: 1px solid var(--border-md); box-shadow: none; }
 .btn-ghost:hover { opacity: 0.85; }
 .btn-brand     { background: var(--brand); color: var(--text-primary); box-shadow: none; }
@@ -983,10 +990,21 @@ a, button { -webkit-tap-highlight-color: transparent; }
   border-radius: 12px;
   padding: 32px;
   cursor: pointer;
+  box-shadow: 0 0 0 1px var(--svc-color, rgba(59, 184, 168, 0.16)), 0 14px 44px var(--svc-color, rgba(59, 184, 168, 0.12));
   transition: box-shadow 0.4s ease, border-color 0.4s ease, opacity 0.4s ease, background 0.4s ease;
   will-change: transform;
   outline: none;
   user-select: none;
+}
+
+.svc-card--active {
+  box-shadow: 0 0 0 1px var(--svc-color, rgba(59, 184, 168, 0.22)), 0 18px 56px var(--svc-color, rgba(59, 184, 168, 0.18));
+}
+
+@media (hover: hover) {
+  .svc-card:hover {
+    box-shadow: 0 0 0 1px var(--svc-color, rgba(59, 184, 168, 0.22)), 0 18px 56px var(--svc-color, rgba(59, 184, 168, 0.18));
+  }
 }
 .svc-card-num {
   position: absolute;
