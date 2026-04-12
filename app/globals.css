@@ -784,6 +784,9 @@ a, button { -webkit-tap-highlight-color: transparent; }
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 .cs-metric-label {
   font-size: 12px;
@@ -856,7 +859,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .cs-top { flex-direction: column; gap: 8px; }
   .cs-footer { flex-direction: column; align-items: flex-start; gap: 20px; }
   .cs-metrics { flex-wrap: wrap; }
-  .cs-metric { flex: 1 1 calc(33% - 8px); min-width: 90px; }
+  .cs-metric { flex: 1 1 calc(33% - 8px); min-width: 0; }
   .cs-selector {
     grid-template-columns: unset;
     display: flex;
@@ -880,10 +883,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   }
   .cs-sel-client { font-size: 10px; }
   .cs-sel-label { font-size: 9px; }
-  .cs-metric-change {
-    font-variant-numeric: tabular-nums;
-    letter-spacing: -0.01em;
-  }
+  .cs-metric-change { font-size: clamp(18px, 7vw, 24px); }
 }
 
 @media (hover: none) and (pointer: coarse) {
