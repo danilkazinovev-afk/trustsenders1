@@ -75,14 +75,22 @@ export function PixelTrail({
   const [pixels, setPixels] = useState<Pixel[]>([])
   const lastCellRef = useRef<{ col: number; row: number } | null>(null)
   const isActiveRef = useRef(false)
+  const [isEnabled, setIsEnabled] = useState(true)
 
   const cols = dimensions.width > 0 ? Math.ceil(dimensions.width / pixelSize) : 0
   const rows = dimensions.height > 0 ? Math.ceil(dimensions.height / pixelSize) : 0
 
   useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const isTouch = window.matchMedia("(hover: none)").matches
+    setIsEnabled(!(prefersReduced || isTouch))
+  }, [])
+
+  useEffect(() => {
+    if (!isEnabled) return
     const timer = setTimeout(() => { isActiveRef.current = true }, delay)
     return () => clearTimeout(timer)
-  }, [delay])
+  }, [delay, isEnabled])
 
   // Check if a grid cell's screen position is over any text content.
   // Uses elementsFromPoint (all layers) and skips our own container so we
@@ -155,9 +163,12 @@ export function PixelTrail({
   )
 
   useEffect(() => {
+    if (!isEnabled) return
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [handleMouseMove])
+  }, [handleMouseMove, isEnabled])
+
+  if (!isEnabled) return null
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>

@@ -36,6 +36,9 @@
 
 html { scroll-behavior: smooth; }
 
+/* iOS scrolling polish */
+body { -webkit-overflow-scrolling: touch; }
+
 body {
   font-family: var(--font-sans);
   background: var(--bg);
@@ -45,6 +48,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 a { color: inherit; text-decoration: none; }
@@ -52,6 +57,10 @@ ul, ol { list-style: none; }
 button { cursor: pointer; font-family: var(--font-sans); }
 img { max-width: 100%; display: block; }
 h1, h2, h3, h4 { font-family: var(--font-heading); }
+
+/* Better mobile text wrapping + tap behavior */
+p, h1, h2, h3, h4 { overflow-wrap: anywhere; }
+a, button { -webkit-tap-highlight-color: transparent; }
 
 /* ============================================================
    LAYOUT
@@ -63,6 +72,9 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
 }
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
 }
 
 /* ============================================================
@@ -154,10 +166,29 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
   position: sticky;
   top: 0;
   z-index: 90;
-  background: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.72);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
+}
+
+/* Subtle aurora wash for the top menu */
+#nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 120% at 20% -30%, rgba(111, 207, 198, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 120% at 80% -30%, rgba(167, 232, 226, 0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 120% at 50% -40%, rgba(59, 184, 168, 0.22) 0%, transparent 55%);
+  filter: blur(14px);
+  opacity: 0.9;
+}
+.nav-inner,
+.mobile-menu {
+  position: relative;
+  z-index: 1;
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 58px; gap: 12px; }
 .nav-logo { font-size: 19px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.4px; flex-shrink: 0; }
@@ -294,6 +325,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
 @media (max-width: 480px) {
   #hero { padding: 72px 0 60px; }
   .hero-ctas { flex-direction: column; align-items: center; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
 }
 
 /* ============================================================
@@ -353,6 +385,12 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
 }
 @media (prefers-reduced-motion: reduce) {
   .ticker-track { animation: none; }
+}
+@media (max-width: 480px) {
+  .ticker-label { margin-bottom: 14px; }
+  .ticker-set { justify-content: space-between; gap: 18px; padding: 0 16px; }
+  .ticker-set img { height: 24px; }
+  .ticker-set img.ticker-logo-lg { height: 34px; }
 }
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
 .stat-item { text-align: center; padding: 8px 24px; border-right: 1px solid var(--border); }
@@ -775,6 +813,10 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
 .pricing-footer a { color: var(--brand-deep); font-weight: 500; transition: color 0.15s; }
 .pricing-footer a:hover { color: var(--text-primary); }
 @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; max-width: 460px; } }
+@media (max-width: 480px) {
+  .pricing-grid { max-width: none; }
+  .pricing-card { padding: 22px; }
+}
 
 /* ============================================================
    LEAD MAGNET
@@ -805,6 +847,10 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
 .faq-item.open .faq-ico { transform: rotate(45deg); border-color: var(--brand); color: var(--brand-deep); }
 .faq-ans { font-size: 15px; line-height: 1.7; color: var(--text-body); max-width: 520px; }
 @media (max-width: 900px) { .faq-layout { grid-template-columns: 1fr; gap: 0; } }
+@media (max-width: 480px) {
+  .faq-btn { padding: 16px 0; }
+  .faq-ans { max-width: none; }
+}
 
 /* ============================================================
    FINAL CTA
@@ -823,6 +869,14 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
 .cta-btns .btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: #fff; opacity: 1; }
 .cta-slogan { margin-top: 52px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: rgba(255,255,255,0.25); }
 .cta-slogan .accent { color: var(--brand); }
+
+@media (max-width: 600px) {
+  #final-cta { padding: 28px 16px; }
+  #final-cta .container { padding: 0; }
+  .cta-box { padding: 56px 18px; border-radius: var(--radius-lg); }
+  .cta-btns .btn { width: 100%; justify-content: center; }
+  .cta-slogan { margin-top: 28px; }
+}
 
 /* ============================================================
    FOOTER
@@ -844,6 +898,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
 @media (max-width: 600px) {
   .footer-top { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .footer-bottom-links { flex-wrap: wrap; justify-content: center; }
 }
 
 /* ============================================================
