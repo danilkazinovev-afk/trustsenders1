@@ -150,11 +150,11 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 /* Mobile: auto-run the sweep (no hover) */
 @keyframes cta-sweep-mobile {
-  from { background-position: left; }
-  to { background-position: right; }
+  from { background-position: right; }
+  to { background-position: left; }
 }
 @media (hover: none) and (pointer: coarse) {
-  .btn-primary {
+  .btn-primary.ts-sweep-once {
     animation: cta-sweep-mobile 2.8s cubic-bezier(0.4, 0, 0.2, 1) 1 both;
   }
 }

@@ -32,6 +32,31 @@ export default function BelowHeroSection() {
   }, [])
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+    const isTouch = window.matchMedia?.("(hover: none) and (pointer: coarse)")?.matches
+    if (!isTouch) return
+
+    const ctas = Array.from(document.querySelectorAll<HTMLElement>(".btn.btn-primary"))
+      .filter((el) => !el.closest("#hero"))
+
+    if (ctas.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return
+          e.target.classList.add("ts-sweep-once")
+          observer.unobserve(e.target)
+        })
+      },
+      { threshold: 0.35 }
+    )
+
+    ctas.forEach((cta) => observer.observe(cta))
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
     const rows = document.querySelectorAll<HTMLElement>("[data-outcome-row]")
     const observer = new IntersectionObserver(
       (entries) => {
