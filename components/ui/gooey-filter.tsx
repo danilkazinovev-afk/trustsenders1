@@ -1,0 +1,25 @@
+"use client"
+
+interface GooeyFilterProps {
+  id: string
+  strength?: number
+}
+
+export function GooeyFilter({ id, strength = 10 }: GooeyFilterProps) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" style={{ position: "absolute", width: 0, height: 0 }}>
+      <defs>
+        <filter id={id}>
+          <feGaussianBlur in="SourceGraphic" stdDeviation={strength} result="blur" />
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+            result="gooey"
+          />
+          <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
+  )
+}
