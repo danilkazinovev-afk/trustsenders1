@@ -149,9 +149,13 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .btn-primary.in-view { background-position: right; }
 
 /* Mobile: auto-run the sweep (no hover) */
+@keyframes cta-sweep-mobile {
+  0%, 100% { background-position: right; }
+  50% { background-position: left; }
+}
 @media (hover: none) and (pointer: coarse) {
   .btn-primary {
-    background-position: left;
+    animation: cta-sweep-mobile 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 }
 .btn-ghost     { background: #fff; color: var(--text-primary); border: 1px solid var(--border-md); box-shadow: none; }
