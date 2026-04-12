@@ -2,6 +2,7 @@ import Nav from "@/components/nav";
 import StatsSection from "@/components/stats-section";
 import BelowHeroSection from "@/components/below-hero-section";
 import ScrollProgress from "@/components/scroll-progress";
+import { TextScramble } from "@/components/ui/text-scramble";
 
 export default function Home() {
   return (
@@ -16,21 +17,31 @@ export default function Home() {
         <div className="container">
           <div className="hero-inner">
             <h1 className="hero-h1" id="hero-h1">
-              <span className="hero-h1-line1">Deliverability &amp; <span className="hero-h1-accent">beyond</span></span><br />
+              <span className="hero-h1-line1">
+                Deliverability &amp;{" "}
+                <TextScramble
+                  text="beyond"
+                  className="hero-h1-accent"
+                  autoStart
+                  inheritTypography
+                  showUnderline={false}
+                  showGlow={false}
+                />
+              </span>
+              <br />
               <span className="hero-h1-line2">We deliver, you <span className="hero-h1-accent">grow</span></span>
             </h1>
 
             <p className="hero-sub">
-              Trust Senders is a premium email infrastructure provider, consulting, and white-glove support for teams that send at scale.
+              Trust<span className="hero-h1-accent">Senders</span> is a premium email infrastructure provider, consulting, and white-glove support for teams that send at scale.
             </p>
 
             <div className="hero-ctas">
               <a href="#final-cta" className="btn btn-primary btn-lg">Book a Free Deliverability Review</a>
-              <a href="#consulting" className="btn btn-ghost btn-lg">Discuss Your Setup</a>
             </div>
 
             <p className="hero-proof">
-              Trusted across 1,000+ engagements — B2B cold outreach &amp; B2C warm audience campaigns
+              Trusted across 1,000+ engagements - B2B cold outreach &amp; B2C warm audience campaigns
             </p>
           </div>
         </div>

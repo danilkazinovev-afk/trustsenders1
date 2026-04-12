@@ -10,6 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        primary: "oklch(var(--primary) / <alpha-value>)",
+        foreground: "var(--foreground)",
+        border: "var(--border-color)",
         brand: "#3BB8A8",
         "brand-light": "#d1f0ec",
         "brand-deep": "#29877a",

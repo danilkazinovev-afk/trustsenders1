@@ -29,8 +29,8 @@ export default function ScrollProgress() {
       <div style={{
         height: "100%",
         width: `${progress}%`,
-        background: "var(--brand-deep)",
-        boxShadow: "0 0 8px rgba(41, 135, 122, 0.7), 0 0 16px rgba(41, 135, 122, 0.35)",
+        background: "var(--brand)",
+        boxShadow: "0 0 8px rgba(20, 184, 166, 0.7), 0 0 16px rgba(20, 184, 166, 0.35)",
         transition: "width 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
       }} />
     </div>

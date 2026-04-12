@@ -268,19 +268,20 @@ export default function BelowHeroSection() {
               { name: "AWS SES",         color: "#ff9900" },
               { name: "SendGrid",        color: "#1a82e2" },
               { name: "Mailgun",         color: "#f02347" },
-              { name: "Custom SMTP",     color: "#888"    },
               { name: "Private Mail Servers", color: "#555" },
               { name: "Instantly",       color: "#3BB8A8" },
               { name: "Smartlead",       color: "#7c3aed" },
               { name: "Reply.io",        color: "#0052ef" },
-              { name: "CRM Workflows",   color: "#aaa"    },
-              { name: "Custom Automation", color: "#aaa"  },
               { name: "Apollo.io",       color: "#f97316" },
               { name: "Outreach.io",     color: "#5c4ee5" },
               { name: "SalesLoft",       color: "#00b4d8" },
               { name: "Lemlist",         color: "#ff6b35" },
               { name: "Snov.io",         color: "#00c07f" },
+              { name: "PlusVibe",        color: "#ef4444" },
               { name: "AI SDRs",         color: "#888"    },
+              { name: "Custom SMTP",     color: "#888"    },
+              { name: "Custom Automation", color: "#aaa"  },
+              { name: "CRM Workflows",   color: "#aaa"    },
             ].map(({ name, color }, i) => (
               <div className="tool-chip" key={name} style={{ "--i": i } as React.CSSProperties}>
                 <span className="tool-dot" style={{ background: color }} />
