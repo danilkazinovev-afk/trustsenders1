@@ -37,7 +37,7 @@ export default function Home() {
             </p>
 
             <div className="hero-ctas">
-              <a href="#final-cta" className="btn btn-primary btn-lg">Book a Free Deliverability Review</a>
+              <a href="/demo" className="btn btn-primary btn-lg">Book a Free Deliverability Review</a>
             </div>
 
             <p className="hero-proof">

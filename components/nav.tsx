@@ -25,7 +25,7 @@ export default function Nav() {
           </div>
 
           <div className="nav-actions">
-            <a href="#final-cta" className="btn btn-primary btn-sm">
+            <a href="/demo" className="btn btn-primary btn-sm">
               Book a Review
             </a>
           </div>
@@ -50,7 +50,7 @@ export default function Nav() {
           <a href="#audience" onClick={close}>Who We Help</a>
           <a href="#pricing" onClick={close}>Pricing</a>
           <a href="#faq" onClick={close}>FAQ</a>
-          <a href="#final-cta" className="btn btn-primary" onClick={close}>
+          <a href="/demo" className="btn btn-primary" onClick={close}>
             Book a Free Deliverability Review
           </a>
         </div>

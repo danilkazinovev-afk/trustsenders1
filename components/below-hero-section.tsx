@@ -307,7 +307,7 @@ export default function BelowHeroSection() {
               { name: "Custom Automation", color: "#aaa"  },
               { name: "CRM Workflows",   color: "#aaa"    },
             ].map(({ name, color }, i) => (
-              <div className="tool-chip" key={name} style={{ "--i": i } as React.CSSProperties}>
+              <div className="tool-chip" key={name} style={{ "--i": i, "--dot-color": color } as React.CSSProperties}>
                 <span className="tool-dot" style={{ background: color }} />
                 {name}
               </div>
@@ -607,7 +607,7 @@ export default function BelowHeroSection() {
               Whether you need a deliverability audit, private infrastructure, spam recovery, or ongoing support — Trust Senders can help you build a more stable and scalable sending system.
             </p>
             <div className="cta-btns">
-              <a href="mailto:hello@trustsenders.com" className="btn btn-primary btn-lg">
+              <a href="/demo" className="btn btn-primary btn-lg">
                 Book a Free Deliverability Review
               </a>
               <a href="#service-cards" className="btn btn-ghost btn-lg">
@@ -631,7 +631,7 @@ export default function BelowHeroSection() {
               <p className="footer-tagline">
                 Expert email deliverability consulting and infrastructure. We deliver. You grow.
               </p>
-              <a href="#final-cta" className="btn btn-primary btn-sm">Book a Free Review</a>
+              <a href="/demo" className="btn btn-primary btn-sm">Book a Free Review</a>
             </div>
 
             <div className="footer-col">
