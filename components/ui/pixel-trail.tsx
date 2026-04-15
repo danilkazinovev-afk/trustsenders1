@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useCallback, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { v4 as uuidv4 } from "uuid"
 import { useDebouncedDimensions } from "@/components/hooks/use-debounced-dimensions"
 
@@ -9,7 +9,9 @@ interface Pixel {
   id: string
   x: number
   y: number
-  fadeDuration: number
+  dying?: boolean
+  tx?: number   // x offset toward cursor when dying
+  ty?: number   // y offset toward cursor when dying
 }
 
 interface PixelTrailProps {
@@ -27,8 +29,6 @@ const TEXT_TAGS = new Set([
 
 const LAYOUT_TAGS = new Set(["DIV", "SECTION", "MAIN", "ARTICLE", "ASIDE", "HEADER", "FOOTER", "NAV"])
 
-// Returns true if the element has any non-empty text node as a direct child.
-// This catches bare text inside divs that aren't wrapped in a text tag.
 function hasDirectText(el: Element): boolean {
   for (const node of el.childNodes) {
     if (node.nodeType === Node.TEXT_NODE && (node.textContent?.trim().length ?? 0) > 0) return true
@@ -48,7 +48,6 @@ function isOverText(target: Element | null): boolean {
   return false
 }
 
-// Returns every grid cell on the line from (c0,r0) to (c1,r1) via Bresenham
 function getLineCells(c0: number, r0: number, c1: number, r1: number) {
   const cells: { col: number; row: number }[] = []
   let x = c0, y = r0
@@ -65,6 +64,9 @@ function getLineCells(c0: number, r0: number, c1: number, r1: number) {
   return cells
 }
 
+// How long the attraction-to-cursor animation takes (seconds)
+const ATTRACT_DURATION = 0.45
+
 export function PixelTrail({
   pixelSize = 32,
   fadeDuration = 1200,
@@ -76,6 +78,8 @@ export function PixelTrail({
   const lastCellRef = useRef<{ col: number; row: number } | null>(null)
   const isActiveRef = useRef(false)
   const [isEnabled, setIsEnabled] = useState(true)
+  // Cursor in container-local coordinates (updated every mousemove)
+  const cursorRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
 
   const cols = dimensions.width > 0 ? Math.ceil(dimensions.width / pixelSize) : 0
   const rows = dimensions.height > 0 ? Math.ceil(dimensions.height / pixelSize) : 0
@@ -92,9 +96,6 @@ export function PixelTrail({
     return () => clearTimeout(timer)
   }, [delay, isEnabled])
 
-  // Check if a grid cell's screen position is over any text content.
-  // Uses elementsFromPoint (all layers) and skips our own container so we
-  // can see through the pixel trail to the actual page content underneath.
   const isCellOverText = useCallback((col: number, row: number): boolean => {
     if (!ref.current) return false
     const rect = ref.current.getBoundingClientRect()
@@ -111,15 +112,30 @@ export function PixelTrail({
   const spawnPixel = useCallback((col: number, row: number) => {
     if (isCellOverText(col, row)) return
     const id = uuidv4()
-    const pxFadeDuration = fadeDuration * (0.6 + Math.random() * 0.9)
     const lingerMs = 60 + Math.random() * 600
-    setPixels((prev) => [...prev, { id, x: col * pixelSize, y: row * pixelSize, fadeDuration: pxFadeDuration }])
-    setTimeout(() => {
-      setPixels((prev) => prev.filter((p) => p.id !== id))
-    }, lingerMs)
-  }, [fadeDuration, pixelSize, isCellOverText])
 
-  // Spawns a pixel with slight jitter, plus an occasional satellite nearby
+    setPixels((prev) => [...prev, { id, x: col * pixelSize, y: row * pixelSize }])
+
+    setTimeout(() => {
+      // Mark as dying: capture cursor position and compute offset from pixel center
+      setPixels((prev) => prev.map((p) => {
+        if (p.id !== id) return p
+        const { x: cx, y: cy } = cursorRef.current
+        return {
+          ...p,
+          dying: true,
+          tx: cx - (p.x + pixelSize / 2),
+          ty: cy - (p.y + pixelSize / 2),
+        }
+      }))
+
+      // Remove after animation completes
+      setTimeout(() => {
+        setPixels((prev) => prev.filter((p) => p.id !== id))
+      }, ATTRACT_DURATION * 1000 + 50)
+    }, lingerMs)
+  }, [pixelSize, isCellOverText])
+
   const spawnScattered = useCallback((col: number, row: number) => {
     const jc = col + Math.round((Math.random() - 0.5) * 1.5)
     const jr = row + Math.round((Math.random() - 0.5) * 1.5)
@@ -141,6 +157,10 @@ export function PixelTrail({
       const rect = ref.current.getBoundingClientRect()
       const x = e.clientX - rect.left
       const y = e.clientY - rect.top
+
+      // Keep cursor ref up to date in container-local coords
+      cursorRef.current = { x, y }
+
       const col = Math.floor(x / pixelSize)
       const row = Math.floor(y / pixelSize)
       if (col < 0 || col >= cols || row < 0 || row >= rows) return
@@ -172,19 +192,24 @@ export function PixelTrail({
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
-      <AnimatePresence>
-        {pixels.map((pixel) => (
-          <motion.div
-            key={pixel.id}
-            className={`absolute ${pixelClassName}`}
-            style={{ left: pixel.x, top: pixel.y, width: pixelSize, height: pixelSize }}
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: pixel.fadeDuration / 1000, ease: "easeIn" }}
-          />
-        ))}
-      </AnimatePresence>
+      {pixels.map((pixel) => (
+        <motion.div
+          key={pixel.id}
+          className={`absolute ${pixelClassName}`}
+          style={{ left: pixel.x, top: pixel.y, width: pixelSize, height: pixelSize }}
+          initial={{ opacity: 1, x: 0, y: 0 }}
+          animate={
+            pixel.dying
+              ? { opacity: 0, x: pixel.tx ?? 0, y: pixel.ty ?? 0 }
+              : { opacity: 1, x: 0, y: 0 }
+          }
+          transition={
+            pixel.dying
+              ? { duration: ATTRACT_DURATION, ease: [0.4, 0, 1, 1] }
+              : { duration: 0 }
+          }
+        />
+      ))}
     </div>
   )
 }

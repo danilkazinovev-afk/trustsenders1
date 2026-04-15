@@ -610,7 +610,7 @@ export default function BelowHeroSection() {
               <a href="mailto:hello@trustsenders.com" className="btn btn-primary btn-lg">
                 Book a Free Deliverability Review
               </a>
-              <a href="#infrastructure" className="btn btn-ghost btn-lg">
+              <a href="#service-cards" className="btn btn-ghost btn-lg">
                 Request an Architecture Review
               </a>
             </div>
@@ -638,8 +638,8 @@ export default function BelowHeroSection() {
               <h4>Services</h4>
               <ul className="footer-links">
                 <li><a href="#services">Deliverability Consulting</a></li>
-                <li><a href="#infrastructure">Private Infrastructure</a></li>
-                <li><a href="#support">Monthly Support</a></li>
+                <li><a href="#service-cards">Private Infrastructure</a></li>
+                <li><a href="#pricing">Monthly Support</a></li>
                 <li><a href="#services">Spam Recovery</a></li>
                 <li><a href="#pricing">View Pricing</a></li>
               </ul>
@@ -668,7 +668,7 @@ export default function BelowHeroSection() {
           </div>
 
           <div className="footer-bottom">
-            <span>© 2024 Trust Senders. All rights reserved.</span>
+            <span>© 2026 Trust Senders. All rights reserved.</span>
             <div className="footer-bottom-links">
               <a href="#">Privacy Policy</a>
               <a href="#">Terms</a>

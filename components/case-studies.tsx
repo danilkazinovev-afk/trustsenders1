@@ -152,12 +152,13 @@ export default function CaseStudies() {
   }
 
   const handleSelectorKey = (e: React.KeyboardEvent, selIdx: number) => {
+    const n = selectorCases.length
     if (e.key === "ArrowRight") {
       e.preventDefault()
-      selRefs.current[(selIdx + 1) % 5]?.focus()
+      selRefs.current[(selIdx + 1) % n]?.focus()
     } else if (e.key === "ArrowLeft") {
       e.preventDefault()
-      selRefs.current[(selIdx - 1 + 5) % 5]?.focus()
+      selRefs.current[(selIdx - 1 + n) % n]?.focus()
     }
   }
 

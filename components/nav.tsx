@@ -16,9 +16,9 @@ export default function Nav() {
 
           <div className="nav-links">
             <a href="#services">Services</a>
-            <a href="#infrastructure">Infrastructure</a>
-            <a href="#consulting">Consulting</a>
-            <a href="#support">Support</a>
+            <a href="#service-cards">Infrastructure</a>
+            <a href="#service-cards">Consulting</a>
+            <a href="#pricing">Support</a>
             <a href="#audience">Who We Help</a>
             <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
@@ -44,9 +44,9 @@ export default function Nav() {
 
         <div className={`mobile-menu${open ? " open" : ""}`} role="menu">
           <a href="#services" onClick={close}>Services</a>
-          <a href="#infrastructure" onClick={close}>Infrastructure</a>
-          <a href="#consulting" onClick={close}>Consulting</a>
-          <a href="#support" onClick={close}>Support</a>
+          <a href="#service-cards" onClick={close}>Infrastructure</a>
+          <a href="#service-cards" onClick={close}>Consulting</a>
+          <a href="#pricing" onClick={close}>Support</a>
           <a href="#audience" onClick={close}>Who We Help</a>
           <a href="#pricing" onClick={close}>Pricing</a>
           <a href="#faq" onClick={close}>FAQ</a>
