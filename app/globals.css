@@ -160,6 +160,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 .btn-ghost     { background: #fff; color: var(--text-primary); border: 1px solid var(--border-md); box-shadow: none; }
 .btn-ghost:hover { opacity: 0.85; }
+.btn-dark-teal { background: #1a1a1a; color: #fff; font-weight: 700; transition: background 0.3s ease, box-shadow 0.3s ease; }
+.btn-dark-teal:hover { background: var(--brand); box-shadow: 0 0 24px rgba(59,184,168,0.4); }
 .btn-brand     { background: var(--brand); color: var(--text-primary); box-shadow: none; }
 .btn-brand:hover { opacity: 0.88; }
 

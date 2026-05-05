@@ -584,7 +584,7 @@ export default function BelowHeroSection() {
               <p>12 things to verify before you scale — find out if your setup is at risk.</p>
             </div>
             <div className="lead-actions">
-              <a href="/demo" className="btn btn-primary">Download Free Checklist</a>
+              <a href="/demo" className="btn btn-dark-teal">Download Free Checklist</a>
             </div>
           </div>
         </div>
@@ -630,7 +630,7 @@ export default function BelowHeroSection() {
               <p className="footer-tagline">
                 Expert email deliverability consulting and infrastructure. We deliver. You grow.
               </p>
-              <a href="/demo" className="btn btn-primary btn-sm">Book a Free Review</a>
+              <a href="/demo" className="btn btn-dark-teal btn-sm">Book a Free Review</a>
             </div>
 
             <div className="footer-col">
