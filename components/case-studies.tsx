@@ -62,6 +62,7 @@ const CASES: CaseStudy[] = [
     industry: "3D Visualization",
     client: "CGI Kite",
     logo: "/logos/cgikite.svg",
+    website: "https://cgikite.com/",
     title: "3D Visualization Studio Scales Client Outreach by 400%",
     challenge: "Studio needed reliable email infrastructure to reach architects and real estate clients with portfolio work",
     solution: "Professional email setup with portfolio delivery system and optimized client communication workflows",
