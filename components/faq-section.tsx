@@ -13,7 +13,7 @@ const col1 = [
   },
   {
     q: "Do you build Google Workspace and Microsoft 365 setups?",
-    a: "Yes. We work with both, as well as SMTP providers and private infrastructure. Our setup work goes beyond provisioning — we configure, optimize, and monitor for long-term performance.",
+    a: "Yes. We work with both, as well as SMTP providers and private infrastructure. Our setup work goes beyond provisioning - we configure, optimize, and monitor for long-term performance.",
   },
   {
     q: "Do you offer private infrastructure with dedicated IPs?",
@@ -36,11 +36,11 @@ const col2 = [
   },
   {
     q: "Do you guarantee inbox placement?",
-    a: "No serious deliverability expert should guarantee inbox placement — mailbox provider behavior is not fully controllable. What we provide is expert analysis, better infrastructure, safer sending strategy, and practical steps to improve performance.",
+    a: "No serious deliverability expert should guarantee inbox placement - mailbox provider behavior is not fully controllable. What we provide is expert analysis, better infrastructure, safer sending strategy, and practical steps to improve performance.",
   },
   {
     q: "How quickly can you stabilize a domain landing in spam?",
-    a: "In suitable cases, we can stabilize B2B domain reputation in as little as 48 hours. More complex cases involving IP reputation or blacklists may take longer. We assess timeline during the initial review — never overpromise, always give you a realistic picture.",
+    a: "In suitable cases, we can stabilize B2B domain reputation in as little as 48 hours. More complex cases involving IP reputation or blacklists may take longer. We assess timeline during the initial review - never overpromise, always give you a realistic picture.",
   },
   {
     q: "What industries do you work with?",

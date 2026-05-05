@@ -258,7 +258,7 @@ export default function BelowHeroSection() {
                 {[
                   "Experience across B2B cold outreach, B2C email, and warm audience campaigns",
                   "Deep knowledge of Google Workspace, Microsoft 365, SMTP platforms, and private infrastructure",
-                  "Custom setups built around your business — not generic mailbox bundles",
+                  "Custom setups built around your business - not generic mailbox bundles",
                   "Fast diagnosis of spam and inbox placement issues",
                   "Practical guidance on tools, sending limits, delays, warm-up, and scaling",
                   "Strategic and technical support in one place",
@@ -283,7 +283,7 @@ export default function BelowHeroSection() {
           <h2 className="section-title" id="tools-h" style={{ maxWidth: 560 }}>
             We work with the tools you already use.
           </h2>
-          <p className="tools-sub">Configured, optimized, and monitored — not just compatible.</p>
+          <p className="tools-sub">Configured, optimized, and monitored - not just compatible.</p>
 
           <div className="tools-wrap" data-tools-wrap>
             {[
@@ -335,7 +335,7 @@ export default function BelowHeroSection() {
                 <h3>Outbound Sales Teams</h3>
                 <div className="aud-tag">Segment 01</div>
               </div>
-              <p>Scale cold outreach safely, protect domain reputation, and build infrastructure that keeps up with your pipeline targets — without landing in spam.</p>
+              <p>Scale cold outreach safely, protect domain reputation, and build infrastructure that keeps up with your pipeline targets - without landing in spam.</p>
             </div>
             <div className="audience-card" style={{ "--aud-color": "29,78,216", "--aud-hex": "#1d4ed8" } as React.CSSProperties}>
               <div className="aud-hdr">
@@ -376,7 +376,7 @@ export default function BelowHeroSection() {
 
           <div className="founder-layout">
             <div className="founder-photo">
-              <img src="/logos/alex.jpg" alt="Alex — Founder" />
+              <img src="/logos/alex.jpg" alt="Alex - Founder" />
             </div>
             <div>
               <div className="founder-name">Alex Grabovskyi</div>
@@ -581,7 +581,7 @@ export default function BelowHeroSection() {
             <div className="lead-text">
               <div className="lead-badge">Free Resource</div>
               <h3>The Email Deliverability Checklist</h3>
-              <p>12 things to verify before you scale — find out if your setup is at risk.</p>
+              <p>12 things to verify before you scale - find out if your setup is at risk.</p>
             </div>
             <div className="lead-actions">
               <a href="/demo" className="btn btn-dark-teal">Download Free Checklist</a>
@@ -603,7 +603,7 @@ export default function BelowHeroSection() {
             <div className="cta-tag">Ready to fix deliverability?</div>
             <h2 className="cta-h2" id="cta-h">Build a better sending setup.</h2>
             <p className="cta-sub">
-              If you're lookig for deliverability recovery, build reliable sending infrastructure and forget about spam — TrustSenders can help you build a more stable and scalable sending system.
+              If you're looking for deliverability recovery, build reliable sending infrastructure and forget about spam - TrustSenders can help you build a more stable and scalable sending system.
             </p>
             <div className="cta-btns">
               <a href="/demo" className="btn btn-primary btn-lg">
@@ -626,7 +626,7 @@ export default function BelowHeroSection() {
         <div className="container">
           <div className="footer-top">
             <div className="footer-brand">
-              <img src="/logos/trustsenders_footer.svg" alt="TrustSenders" className="footer-logo-img" />
+              <img src="/logos/trustsenders.png" alt="TrustSenders" className="footer-logo-img" />
               <p className="footer-tagline">
                 Expert email deliverability consulting and infrastructure. We deliver. You grow.
               </p>

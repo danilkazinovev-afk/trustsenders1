@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Nav from "@/components/nav"
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Trust Senders",
+  title: "Terms of Service - Trust Senders",
   description: "The terms and conditions governing your use of Trust Senders services.",
 }
 

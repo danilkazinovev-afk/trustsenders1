@@ -157,7 +157,7 @@ export default function DemoForm() {
               </h1>
               <p className="demo-sub">
                 Tell us about your sending setup. We'll identify the real issues
-                and show you exactly what needs to be fixed — no commitment
+                and show you exactly what needs to be fixed - no commitment
                 required.
               </p>
 
@@ -277,7 +277,7 @@ export default function DemoForm() {
         <div className="section-tag">Other Ways to Reach Us</div>
         <h2 className="demo-info-heading">Prefer to talk directly?</h2>
         <p className="demo-info-sub">
-          We're here however works best for you. No automated responses — real
+          We're here however works best for you. No automated responses - real
           answers from the team behind the work.
         </p>
 
@@ -316,7 +316,7 @@ export default function DemoForm() {
               "We review your submission and current setup details",
               "We reach out within 24 hours to schedule a short call",
               "30-minute call to diagnose the real deliverability issue",
-              "You get a clear, honest action plan — no fluff, no pressure",
+              "You get a clear, honest action plan - no fluff, no pressure",
             ].map((step, i) => (
               <div className="demo-step" key={i}>
                 <div className="demo-step-num">{i + 1}</div>
@@ -330,7 +330,7 @@ export default function DemoForm() {
           Have questions? Check our{" "}
           <a href="/#faq">FAQ</a> or email us at{" "}
           <a href="mailto:hello@trustsenders.com">hello@trustsenders.com</a>
-          {" "}— we're always happy to help.
+          {" "}- we're always happy to help.
         </p>
       </div>
 

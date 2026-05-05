@@ -17,9 +17,12 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Trust Senders — We Deliver. You Grow.",
+  title: "Trust Senders - We Deliver. You Grow.",
   description:
-    "Your emails shouldn't land in spam. Trust Senders fixes deliverability, builds private infrastructure, and keeps your sending stable — so you can scale with confidence.",
+    "Your emails shouldn't land in spam. Trust Senders fixes deliverability, builds private infrastructure, and keeps your sending stable - so you can scale with confidence.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +33,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${spaceMono.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link
           href="https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap"
           rel="stylesheet"
