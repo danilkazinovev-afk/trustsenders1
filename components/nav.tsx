@@ -25,7 +25,7 @@ export default function Nav() {
           </div>
 
           <div className="nav-actions">
-            <a href="/demo" className="btn btn-primary btn-sm">
+            <a href="/demo" className="btn btn-dark-teal btn-sm">
               Book a Review
             </a>
           </div>
