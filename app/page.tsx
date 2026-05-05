@@ -29,7 +29,7 @@ export default function Home() {
                 />
               </span>
               <br />
-              <span className="hero-h1-line2">We deliver, <span className="hero-h1-accent">you grow</span></span>
+              <span className="hero-h1-line2">We deliver. <span className="hero-h1-accent">You grow</span></span>
             </h1>
 
             <p className="hero-sub">
