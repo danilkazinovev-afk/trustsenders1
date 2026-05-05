@@ -8,7 +8,7 @@ const CARDS = [
     label: "CONSULTING",
     title: "Deliverability consulting that goes beyond generic advice.",
     preview: "Many teams do not need more dashboards. They need clear answers.",
-    cta: { label: "Book a Consultation", href: "#final-cta" },
+    cta: { label: "Book a Consultation", href: "/demo" },
     glow: {
       boxShadow: "0 0 32px rgba(139, 92, 246, 0.22)",
       borderColor: "rgba(139, 92, 246, 0.35)",
@@ -29,7 +29,7 @@ const CARDS = [
     label: "PRIVATE INFRASTRUCTURE",
     title: "Private infrastructure built for real email operations.",
     preview: "Not every business should rely on the same standard setup.",
-    cta: { label: "Request an Architecture Review", href: "#final-cta" },
+    cta: { label: "Request an Architecture Review", href: "/demo" },
     glow: {
       boxShadow: "0 0 32px rgba(59, 184, 168, 0.25)",
       borderColor: "rgba(59, 184, 168, 0.4)",
@@ -51,7 +51,7 @@ const CARDS = [
     label: "MONTHLY SUPPORT",
     title: "Ongoing support for teams that need more than a one-time fix.",
     preview: "Deliverability is not something you set once and forget.",
-    cta: { label: "Get Monthly Support", href: "#pricing" },
+    cta: { label: "Get Monthly Support", href: "/demo" },
     glow: {
       boxShadow: "0 0 32px rgba(6, 182, 212, 0.22)",
       borderColor: "rgba(6, 182, 212, 0.35)",

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Karla, Space_Mono, Geologica } from "next/font/google";
+import { DM_Sans, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/providers";
 
-const karla = Karla({
+const dmSans = DM_Sans({
   subsets: ["latin"],
+  weight: ["400"],
   variable: "--font-karla",
 });
 
@@ -13,11 +14,6 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   variable: "--font-space-mono",
-});
-
-const geologica = Geologica({
-  subsets: ["latin"],
-  variable: "--font-geologica",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${karla.variable} ${spaceMono.variable} ${geologica.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${spaceMono.variable}`}>
+      <head>
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>

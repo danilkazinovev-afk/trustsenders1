@@ -12,6 +12,7 @@ interface Metric {
 interface CaseStudy {
   industry: string
   client: string
+  logo?: string
   title: string
   challenge: string
   solution: string
@@ -25,6 +26,7 @@ const CASES: CaseStudy[] = [
   {
     industry: "AI Platform",
     client: "TensorApp.ai",
+    logo: "/logos/tensorai.svg",
     title: "AI Platform Achieves 99% Inbox Rate with Infrastructure Overhaul",
     challenge: "Complex AI platform needed reliable email infrastructure for user notifications and marketing",
     solution: "Complete email infrastructure deployment with advanced authentication and monitoring",
@@ -40,6 +42,7 @@ const CASES: CaseStudy[] = [
   {
     industry: "AI / Meetings",
     client: "Cogram",
+    logo: "/logos/cogram.svg",
     title: "AI Meeting Assistant Achieves Seamless Communication",
     challenge: "Meeting summaries and notifications frequently blocked or filtered by enterprise mail servers",
     solution: "B2B-focused email infrastructure with compliance-first approach and enhanced authentication",
@@ -55,6 +58,7 @@ const CASES: CaseStudy[] = [
   {
     industry: "VR / AR",
     client: "ServReality",
+    logo: "/logos/servreality.svg",
     title: "VR/AR Company Enables 120K+ Monthly Email Volume",
     challenge: "Existing infrastructure couldn't handle growing email volume needs, capping growth potential",
     solution: "Scalable email infrastructure setup with high-volume sending capabilities and dedicated routing",
@@ -70,6 +74,7 @@ const CASES: CaseStudy[] = [
   {
     industry: "macOS Software",
     client: "MacPaw",
+    logo: "/logos/macpaw.svg",
     title: "MacOS Software Giant Optimizes User Communication at Scale",
     challenge: "Large user base receiving inconsistent email delivery for product updates and notifications",
     solution: "Enterprise-grade infrastructure with automated reputation monitoring and region-aware routing",
@@ -85,6 +90,7 @@ const CASES: CaseStudy[] = [
   {
     industry: "Software / Global",
     client: "CleanMyMac",
+    logo: "/logos/cleanmymac.svg",
     title: "Mac Cleaning Software Scales Global Email Operations",
     challenge: "International user base experiencing poor email delivery across regions and ISPs",
     solution: "Global infrastructure deployment with region-specific optimization and localized sending paths",
@@ -100,6 +106,7 @@ const CASES: CaseStudy[] = [
   {
     industry: "3D Visualization",
     client: "CGI Kite",
+    logo: "/logos/cgikite.svg",
     title: "3D Visualization Studio Scales Client Outreach by 400%",
     challenge: "Studio needed reliable email infrastructure to reach architects and real estate clients with portfolio work",
     solution: "Professional email setup with portfolio delivery system and optimized client communication workflows",
@@ -185,8 +192,11 @@ export default function CaseStudies() {
             <div className="cs-top">
               <div className="cs-industry">{cs.industry}</div>
               <div className="cs-client-meta">
-                <span className="cs-client-name">{cs.client}</span>
-                <a href="#final-cta" className="cs-visit">Visit Website</a>
+                {cs.logo
+                  ? <img src={cs.logo} alt={cs.client} className="cs-client-logo" />
+                  : <span className="cs-client-name">{cs.client}</span>
+                }
+                <a href="/demo" className="cs-visit">Visit Website</a>
               </div>
             </div>
 
@@ -213,9 +223,6 @@ export default function CaseStudies() {
                   <div className="cs-metric" key={m.label}>
                     <div className="cs-metric-change">{m.change}</div>
                     <div className="cs-metric-label">{m.label}</div>
-                    <div className="cs-metric-range">
-                      {m.to ? `${m.from} → ${m.to}` : m.from}
-                    </div>
                   </div>
                 ))}
               </div>
@@ -236,7 +243,10 @@ export default function CaseStudies() {
               aria-label={`View ${client} case study`}
             >
               <div className="cs-sel-num">{selectorMetric}</div>
-              <div className="cs-sel-client">{client}</div>
+              {CASES[origIdx].logo
+                ? <img src={CASES[origIdx].logo} alt={client} className="cs-sel-logo" />
+                : <div className="cs-sel-client">{client}</div>
+              }
               <div className="cs-sel-label">{selectorLabel}</div>
             </button>
           ))}

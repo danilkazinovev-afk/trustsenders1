@@ -88,9 +88,7 @@ function SuccessState() {
       </div>
       <h2>We got it.</h2>
       <p>
-        We'll be in touch within 24 hours to schedule your free deliverability
-        review. Check your inbox — it'll come from{" "}
-        <strong>hello@trustsenders.com</strong>.
+        We'll review your setup and get back to you within 24 hours.
       </p>
       <a href="/" className="btn btn-ghost btn-sm" style={{ marginTop: 8 }}>
         ← Back to Trust Senders
@@ -102,13 +100,45 @@ function SuccessState() {
 export default function DemoForm() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [submitError, setSubmitError] = useState("")
+
+  const [fullName, setFullName] = useState("")
+  const [workEmail, setWorkEmail] = useState("")
+  const [companyWebsite, setCompanyWebsite] = useState("")
+  const [situation, setSituation] = useState("")
+  const [monthlyVolume, setMonthlyVolume] = useState("")
+  const [deliverabilityIssue, setDeliverabilityIssue] = useState("")
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 900))
-    setLoading(false)
-    setSubmitted(true)
+    setSubmitError("")
+
+    try {
+      const res = await fetch("/api/submit-consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          full_name: fullName,
+          work_email: workEmail,
+          company_website: companyWebsite || undefined,
+          situation: situation || undefined,
+          monthly_send_volume: monthlyVolume || undefined,
+          deliverability_issue: deliverabilityIssue || undefined,
+        }),
+      })
+
+      if (!res.ok) {
+        setSubmitError("Something went wrong. Please try again or email us directly.")
+        return
+      }
+
+      setSubmitted(true)
+    } catch {
+      setSubmitError("Something went wrong. Please try again or email us directly.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -140,6 +170,8 @@ export default function DemoForm() {
                       className="demo-input"
                       placeholder="Your name"
                       required
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
                     />
                   </div>
                   <div className="demo-field">
@@ -149,6 +181,8 @@ export default function DemoForm() {
                       className="demo-input"
                       placeholder="you@company.com"
                       required
+                      value={workEmail}
+                      onChange={(e) => setWorkEmail(e.target.value)}
                     />
                   </div>
                 </div>
@@ -162,6 +196,8 @@ export default function DemoForm() {
                     id="company" name="company" type="text"
                     className="demo-input"
                     placeholder="yourcompany.com"
+                    value={companyWebsite}
+                    onChange={(e) => setCompanyWebsite(e.target.value)}
                   />
                 </div>
 
@@ -172,7 +208,8 @@ export default function DemoForm() {
                       id="type" name="type"
                       className="demo-select"
                       required
-                      defaultValue=""
+                      value={situation}
+                      onChange={(e) => setSituation(e.target.value)}
                     >
                       <option value="" disabled>Select your situation</option>
                       {BUSINESS_TYPES.map((t) => (
@@ -186,7 +223,8 @@ export default function DemoForm() {
                       id="volume" name="volume"
                       className="demo-select"
                       required
-                      defaultValue=""
+                      value={monthlyVolume}
+                      onChange={(e) => setMonthlyVolume(e.target.value)}
                     >
                       <option value="" disabled>Select volume</option>
                       {VOLUMES.map((v) => (
@@ -205,6 +243,8 @@ export default function DemoForm() {
                     id="message" name="message"
                     className="demo-textarea"
                     placeholder="e.g. Emails landing in spam, domain reputation dropping after scaling, need private infrastructure for cold outreach…"
+                    value={deliverabilityIssue}
+                    onChange={(e) => setDeliverabilityIssue(e.target.value)}
                   />
                 </div>
 
@@ -217,6 +257,11 @@ export default function DemoForm() {
                   >
                     {loading ? "Sending…" : "Book My Free Review"}
                   </button>
+                  {submitError && (
+                    <p style={{ color: "#e53e3e", fontSize: 14, marginTop: 8 }}>
+                      {submitError}
+                    </p>
+                  )}
                   <p className="demo-disclaimer">
                     No commitment required. We'll respond within 24 hours.
                   </p>

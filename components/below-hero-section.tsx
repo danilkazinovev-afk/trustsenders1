@@ -213,7 +213,7 @@ export default function BelowHeroSection() {
           </div>
 
           <div className="problems-cta">
-            <a href="#final-cta" className="btn btn-primary btn-lg">
+            <a href="/demo" className="btn btn-primary btn-lg">
               Get a Free Deliverability Check
             </a>
           </div>
@@ -316,7 +316,7 @@ export default function BelowHeroSection() {
 
           <div className="tools-note">
             <span>If your setup involves multiple tools, custom routing, or mixed infrastructure, we can help make it work properly.</span>
-            <a href="#final-cta" className="btn btn-ghost btn-sm">Discuss Your Setup →</a>
+            <a href="/demo" className="btn btn-ghost btn-sm">Discuss Your Setup →</a>
           </div>
         </div>
       </section>
@@ -461,7 +461,7 @@ export default function BelowHeroSection() {
           </div>
 
           <div className="process-cta">
-            <a href="#final-cta" className="btn btn-primary btn-lg">Start With a Free Review</a>
+            <a href="/demo" className="btn btn-primary btn-lg">Start With a Free Review</a>
           </div>
         </div>
       </section>
@@ -537,14 +537,14 @@ export default function BelowHeroSection() {
               <div className="p-type">One-Time</div>
               <div className="p-name">Consulting</div>
               <div className="p-price-block">
-                <div className="p-price">Starting from $[X]</div>
+                <div className="p-price">Starting from $300</div>
                 <div className="p-price-note">Per engagement, scoped to your audit needs</div>
               </div>
               <p className="p-desc">Deliverability audits, inbox placement analysis, and infrastructure recommendations. Ideal for teams that need a clear diagnosis and action plan.</p>
-              <div className="p-action"><a href="#final-cta">Book a Consultation</a></div>
+              <div className="p-action"><a href="/demo">Book a Consultation</a></div>
             </div>
 
-            <div className="pricing-card featured">
+            <div className="pricing-card">
               <div className="p-type">Infrastructure Build</div>
               <div className="p-name">Private Infrastructure</div>
               <div className="p-price-block">
@@ -552,24 +552,24 @@ export default function BelowHeroSection() {
                 <div className="p-price-note">Volume, domains, IP requirements, and use case</div>
               </div>
               <p className="p-desc">Custom sending architecture with dedicated IPs, SMTP configuration, DNS setup, warm-up planning, and deployment. Scoped to your volume and use case.</p>
-              <div className="p-action"><a href="#final-cta">Request an Architecture Review</a></div>
+              <div className="p-action"><a href="/demo">Request an Architecture Review</a></div>
             </div>
 
             <div className="pricing-card">
               <div className="p-type">Ongoing</div>
               <div className="p-name">Monthly Support</div>
               <div className="p-price-block">
-                <div className="p-price">From $[X] / month</div>
+                <div className="p-price">From $500 / month</div>
                 <div className="p-price-note">Your external deliverability team</div>
               </div>
               <p className="p-desc">Ongoing deliverability monitoring, troubleshooting, strategy adjustments, and infrastructure support. Scales with your operation.</p>
-              <div className="p-action"><a href="#final-cta">Get Monthly Support</a></div>
+              <div className="p-action"><a href="/demo">Get Monthly Support</a></div>
             </div>
           </div>
 
           <p className="pricing-footer">
             Not sure which option fits?{" "}
-            <a href="#final-cta">Start with a free deliverability review →</a>
+            <a href="/demo">Start with a free deliverability review →</a>
           </p>
         </div>
       </section>
@@ -584,8 +584,7 @@ export default function BelowHeroSection() {
               <p>12 things to verify before you scale — find out if your setup is at risk.</p>
             </div>
             <div className="lead-actions">
-              <a href="#final-cta" className="btn btn-primary">Download Free Checklist</a>
-              <a href="#final-cta" className="btn btn-ghost btn-sm">5-Minute Inbox Self-Audit →</a>
+              <a href="/demo" className="btn btn-primary">Download Free Checklist</a>
             </div>
           </div>
         </div>
@@ -604,13 +603,13 @@ export default function BelowHeroSection() {
             <div className="cta-tag">Ready to fix deliverability?</div>
             <h2 className="cta-h2" id="cta-h">Build a better sending setup.</h2>
             <p className="cta-sub">
-              Whether you need a deliverability audit, private infrastructure, spam recovery, or ongoing support — Trust Senders can help you build a more stable and scalable sending system.
+              If you're lookig for deliverability recovery, build reliable sending infrastructure and forget about spam — TrustSenders can help you build a more stable and scalable sending system.
             </p>
             <div className="cta-btns">
               <a href="/demo" className="btn btn-primary btn-lg">
                 Book a Free Deliverability Review
               </a>
-              <a href="#service-cards" className="btn btn-ghost btn-lg">
+              <a href="/demo" className="btn btn-ghost btn-lg">
                 Request an Architecture Review
               </a>
             </div>
@@ -627,7 +626,7 @@ export default function BelowHeroSection() {
         <div className="container">
           <div className="footer-top">
             <div className="footer-brand">
-              <div className="logo">Trust<span className="accent">Senders</span></div>
+              <img src="/logos/trustsenders_logo.svg" alt="TrustSenders" className="footer-logo-img" />
               <p className="footer-tagline">
                 Expert email deliverability consulting and infrastructure. We deliver. You grow.
               </p>
@@ -662,7 +661,7 @@ export default function BelowHeroSection() {
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#lead-magnet">Deliverability Checklist</a></li>
                 <li><a href="#tools">Platform Compatibility</a></li>
-                <li><a href="#final-cta">Contact</a></li>
+                <li><a href="/demo">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -670,8 +669,8 @@ export default function BelowHeroSection() {
           <div className="footer-bottom">
             <span>© 2026 Trust Senders. All rights reserved.</span>
             <div className="footer-bottom-links">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms</a>
+              <a href="/privacy">Privacy Policy</a>
+              <a href="/terms">Terms</a>
               <a href="mailto:hello@trustsenders.com">hello@trustsenders.com</a>
             </div>
           </div>

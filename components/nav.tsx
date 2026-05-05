@@ -10,8 +10,8 @@ export default function Nav() {
     <nav id="nav" role="navigation" aria-label="Main navigation">
       <div className="container">
         <div className="nav-inner">
-          <a href="#" className="nav-logo">
-            Trust<span className="accent">Senders</span>
+          <a href="/" className="nav-logo">
+            <img src="/logos/trustsenders_logo.svg" alt="TrustSenders" className="nav-logo-img" />
           </a>
 
           <div className="nav-links">

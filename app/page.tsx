@@ -29,11 +29,11 @@ export default function Home() {
                 />
               </span>
               <br />
-              <span className="hero-h1-line2">We deliver, you <span className="hero-h1-accent">grow</span></span>
+              <span className="hero-h1-line2">We deliver, <span className="hero-h1-accent">you grow</span></span>
             </h1>
 
             <p className="hero-sub">
-              Trust<span className="hero-h1-accent">Senders</span> is a premium email infrastructure provider, consulting, and white-glove support for teams that send at scale.
+              Premium email infrastructure provider, consulting, and white-glove support for teams that send at scale.
             </p>
 
             <div className="hero-ctas">
@@ -56,18 +56,38 @@ export default function Home() {
         <div className="ticker-wrap">
           <div className="ticker-track">
             <div className="ticker-set">
-              <img src="/logos/6937eea1bed9853c18f0970c_newscatcherlogo.svg" alt="NewsCatcher" />
-              <img src="/logos/Vector-1-removebg-pr.png" alt="Client logo" />
-              <img src="/logos/cleanmymac-x4x.png" alt="CleanMyMac" />
-              <img src="/logos/logo.svg" alt="Client logo" />
-              <img src="/logos/macpaw-logo-png_seeklogo-451807.png" alt="MacPaw" className="ticker-logo-lg" />
+              <img src="/logos/cgikite.svg"           alt="CGI Kite" />
+              <img src="/logos/codeit.svg"            alt="Codeit" />
+              <img src="/logos/cogram.svg"            alt="Cogram" />
+              <img src="/logos/keralds.svg"           alt="Keralds" />
+              <img src="/logos/macpaw.svg"            alt="MacPaw" />
+              <img src="/logos/newscatcherapi.svg"    alt="NewsCatcher API" />
+              <img src="/logos/nsbm.svg"              alt="NSBM" />
+              <img src="/logos/otherland.svg"         alt="Otherland" />
+              <img src="/logos/pitchmonster.svg"      alt="PitchMonster" />
+              <img src="/logos/springbolt-group.svg"  alt="Springbolt Group" />
+              <img src="/logos/stackbooster.svg"      alt="StackBooster" />
+              <img src="/logos/temy.svg"              alt="Temy" />
+              <img src="/logos/vagivital.svg"         alt="Vagivital" />
+              <img src="/logos/wiseboard.svg"         alt="Wiseboard" />
+              <img src="/logos/cleanmymac.svg"        alt="CleanMyMac" />
             </div>
             <div className="ticker-set" aria-hidden="true">
-              <img src="/logos/6937eea1bed9853c18f0970c_newscatcherlogo.svg" alt="" />
-              <img src="/logos/Vector-1-removebg-pr.png" alt="" />
-              <img src="/logos/cleanmymac-x4x.png" alt="" />
-              <img src="/logos/logo.svg" alt="" />
-              <img src="/logos/macpaw-logo-png_seeklogo-451807.png" alt="" />
+              <img src="/logos/cgikite.svg"           alt="" />
+              <img src="/logos/codeit.svg"            alt="" />
+              <img src="/logos/cogram.svg"            alt="" />
+              <img src="/logos/keralds.svg"           alt="" />
+              <img src="/logos/macpaw.svg"            alt="" />
+              <img src="/logos/newscatcherapi.svg"    alt="" />
+              <img src="/logos/nsbm.svg"              alt="" />
+              <img src="/logos/otherland.svg"         alt="" />
+              <img src="/logos/pitchmonster.svg"      alt="" />
+              <img src="/logos/springbolt-group.svg"  alt="" />
+              <img src="/logos/stackbooster.svg"      alt="" />
+              <img src="/logos/temy.svg"              alt="" />
+              <img src="/logos/vagivital.svg"         alt="" />
+              <img src="/logos/wiseboard.svg"         alt="" />
+              <img src="/logos/cleanmymac.svg"        alt="" />
             </div>
           </div>
         </div>
