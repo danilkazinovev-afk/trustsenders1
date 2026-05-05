@@ -30,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${spaceMono.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link
           href="https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap"
           rel="stylesheet"
