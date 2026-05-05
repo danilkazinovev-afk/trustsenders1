@@ -282,20 +282,18 @@ a, button { -webkit-tap-highlight-color: transparent; }
    HERO
 ============================================================ */
 #hero {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  padding: 0 0 0;
+  min-height: calc(100svh - 58px);
+  display: grid;
+  grid-template-rows: 1fr auto;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 #hero > .container {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 80px;
+  padding-top: 60px;
   padding-bottom: 40px;
 }
 
@@ -410,18 +408,18 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 @media (max-width: 900px) {
   #hero { min-height: calc(100svh - 54px); }
-  #hero > .container { padding-top: 60px; padding-bottom: 32px; }
+  #hero > .container { padding-top: 48px; padding-bottom: 32px; }
 }
 @media (max-width: 768px) {
   #hero { min-height: calc(100svh - 54px); }
-  #hero > .container { padding-top: 48px; padding-bottom: 28px; }
+  #hero > .container { padding-top: 40px; padding-bottom: 24px; }
   .hero-h1-line1 { font-size: clamp(36px, 9vw, 56px); }
   .hero-h1-line2 { font-size: clamp(28px, 6.5vw, 44px); }
   .hero-sub { font-size: 17px; margin-bottom: 28px; }
 }
 @media (max-width: 480px) {
   #hero { min-height: calc(100svh - 50px); }
-  #hero > .container { padding-top: 32px; padding-bottom: 24px; }
+  #hero > .container { padding-top: 28px; padding-bottom: 20px; }
   .hero-h1-line1 { font-size: clamp(32px, 9vw, 44px); }
   .hero-h1-line2 { font-size: clamp(24px, 7vw, 34px); }
   .hero-sub { font-size: 15px; margin-bottom: 20px; }
