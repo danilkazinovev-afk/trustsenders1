@@ -379,10 +379,10 @@ export default function BelowHeroSection() {
               <img src="/logos/alex.jpg" alt="Alex - Founder" />
             </div>
             <div>
-              <div className="founder-name">Alex Grabovskyi</div>
+              <div className="founder-name">Oleksandr Hrabovskyi</div>
               <div className="founder-role">Email Deliverability Consultant &amp; Infrastructure Architect</div>
               <p className="founder-bio">
-                Alex Hrabovskyi is an email deliverability expert and infrastructure architect who has reduced spam placement from 70% to 3% across 500+ organizations and managed deliverability operations for 200 B2B clients across the US and Europe.
+                Oleksandr Hrabovskyi is an email deliverability expert and infrastructure architect who has reduced spam placement from 70% to 3% across 500+ organizations and managed deliverability operations for 200 B2B clients across the US and Europe.
               </p>
               <p className="founder-bio">
                 Through Trust Senders, Alex helps businesses fix deliverability issues and scale email safely, covering Google Workspace, Microsoft 365, SMTP, DNS authentication, dedicated IPs, and private sending infrastructure.
