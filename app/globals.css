@@ -721,6 +721,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   display: flex;
   align-items: center;
   gap: 14px;
+  line-height: 1;
 }
 .cs-client-name {
   font-size: 14px;
@@ -739,6 +740,9 @@ a, button { -webkit-tap-highlight-color: transparent; }
   height: 22px;
   width: auto;
   max-width: 120px;
+  display: block;
+  object-fit: contain;
+  object-position: center;
 }
 .cs-sel-logo {
   height: 14px;
