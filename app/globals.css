@@ -236,7 +236,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 58px; gap: 12px; }
 .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
-.nav-logo-img { height: 56px; width: auto; display: block; filter: none; image-rendering: -webkit-optimize-contrast; }
+.nav-logo-img { height: 56px; width: auto; display: block; filter: none; -webkit-transform: translateZ(0); transform: translateZ(0); will-change: transform; }
 .nav-links { display: flex; align-items: center; gap: 0; flex: 1; justify-content: center; }
 .nav-links a { font-size: 15px; font-weight: 700; color: var(--text-body); padding: 5px 10px; border-radius: var(--radius-sm); transition: color 0.15s, background 0.15s; }
 .nav-links a:hover { color: var(--text-primary); background: rgba(59,184,168,0.12); }
