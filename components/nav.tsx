@@ -11,7 +11,7 @@ export default function Nav() {
       <div className="container">
         <div className="nav-inner">
           <a href="/" className="nav-logo">
-            <img src="/logos/trustsenders_logo.svg" alt="TrustSenders" className="nav-logo-img" />
+            <img src="/logos/trustsenders_logo.png" alt="TrustSenders" className="nav-logo-img" />
           </a>
 
           <div className="nav-links">
