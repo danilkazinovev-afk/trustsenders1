@@ -13,6 +13,7 @@ interface CaseStudy {
   industry: string
   client: string
   logo?: string
+  website?: string
   title: string
   challenge: string
   solution: string
@@ -24,57 +25,10 @@ interface CaseStudy {
 
 const CASES: CaseStudy[] = [
   {
-    industry: "AI Platform",
-    client: "TensorApp.ai",
-    logo: "/logos/tensorai.svg",
-    title: "AI Platform Achieves 99% Inbox Rate with Infrastructure Overhaul",
-    challenge: "Complex AI platform needed reliable email infrastructure for user notifications and marketing",
-    solution: "Complete email infrastructure deployment with advanced authentication and monitoring",
-    timeline: "2 months",
-    metrics: [
-      { label: "Deliverability", change: "+34%", from: "65%", to: "99%" },
-      { label: "Revenue Growth", change: "+300%", from: "$45K/mo", to: "$180K/mo" },
-      { label: "Engagement", change: "+22.3%", from: "12.4%", to: "34.7%" },
-    ],
-    selectorMetric: "99%",
-    selectorLabel: "Inbox rate",
-  },
-  {
-    industry: "AI / Meetings",
-    client: "Cogram",
-    logo: "/logos/cogram.svg",
-    title: "AI Meeting Assistant Achieves Seamless Communication",
-    challenge: "Meeting summaries and notifications frequently blocked or filtered by enterprise mail servers",
-    solution: "B2B-focused email infrastructure with compliance-first approach and enhanced authentication",
-    timeline: "5 weeks",
-    metrics: [
-      { label: "Deliverability", change: "+52%", from: "42%", to: "94%" },
-      { label: "Revenue Growth", change: "+272%", from: "$18K/mo", to: "$67K/mo" },
-      { label: "Engagement", change: "+20.5%", from: "18.7%", to: "39.2%" },
-    ],
-    selectorMetric: "+52%",
-    selectorLabel: "Deliverability",
-  },
-  {
-    industry: "VR / AR",
-    client: "ServReality",
-    logo: "/logos/servreality.svg",
-    title: "VR/AR Company Enables 120K+ Monthly Email Volume",
-    challenge: "Existing infrastructure couldn't handle growing email volume needs, capping growth potential",
-    solution: "Scalable email infrastructure setup with high-volume sending capabilities and dedicated routing",
-    timeline: "3 months",
-    metrics: [
-      { label: "Volume Growth", change: "+2400%", from: "5K/mo", to: "120K+/mo" },
-      { label: "Revenue Growth", change: "+280%", from: "$25K/mo", to: "$95K/mo" },
-      { label: "Engagement", change: "+16.5%", from: "15.3%", to: "31.8%" },
-    ],
-    selectorMetric: "+2400%",
-    selectorLabel: "Volume growth",
-  },
-  {
     industry: "macOS Software",
     client: "MacPaw",
     logo: "/logos/macpaw.svg",
+    website: "https://macpaw.com/",
     title: "MacOS Software Giant Optimizes User Communication at Scale",
     challenge: "Large user base receiving inconsistent email delivery for product updates and notifications",
     solution: "Enterprise-grade infrastructure with automated reputation monitoring and region-aware routing",
@@ -88,20 +42,21 @@ const CASES: CaseStudy[] = [
     selectorLabel: "Retention",
   },
   {
-    industry: "Software / Global",
-    client: "CleanMyMac",
-    logo: "/logos/cleanmymac.svg",
-    title: "Mac Cleaning Software Scales Global Email Operations",
-    challenge: "International user base experiencing poor email delivery across regions and ISPs",
-    solution: "Global infrastructure deployment with region-specific optimization and localized sending paths",
-    timeline: "8 weeks",
+    industry: "VR / AR",
+    client: "ServReality",
+    logo: "/logos/servreality.svg",
+    website: "https://servreality.com/",
+    title: "VR/AR Company Enables 120K+ Monthly Email Volume",
+    challenge: "Existing infrastructure couldn't handle growing email volume needs, capping growth potential",
+    solution: "Scalable email infrastructure setup with high-volume sending capabilities and dedicated routing",
+    timeline: "3 months",
     metrics: [
-      { label: "Deliverability", change: "+24%", from: "69%", to: "93%" },
-      { label: "Global Reach", change: "+60%", from: "Satisfaction score" },
-      { label: "Engagement", change: "+16.6%", from: "16.8%", to: "33.4%" },
+      { label: "Volume Growth", change: "+2400%", from: "5K/mo", to: "120K+/mo" },
+      { label: "Revenue Growth", change: "+280%", from: "$25K/mo", to: "$95K/mo" },
+      { label: "Engagement", change: "+16.5%", from: "15.3%", to: "31.8%" },
     ],
-    selectorMetric: "+24%",
-    selectorLabel: "Global reach",
+    selectorMetric: "+2400%",
+    selectorLabel: "Volume growth",
   },
   {
     industry: "3D Visualization",
@@ -118,6 +73,57 @@ const CASES: CaseStudy[] = [
     ],
     selectorMetric: "+300%",
     selectorLabel: "Revenue growth",
+  },
+  {
+    industry: "Software / Global",
+    client: "CleanMyMac",
+    logo: "/logos/cleanmymac.svg",
+    website: "https://cleanmymac.com/",
+    title: "Mac Cleaning Software Scales Global Email Operations",
+    challenge: "International user base experiencing poor email delivery across regions and ISPs",
+    solution: "Global infrastructure deployment with region-specific optimization and localized sending paths",
+    timeline: "8 weeks",
+    metrics: [
+      { label: "Deliverability", change: "+24%", from: "69%", to: "93%" },
+      { label: "Global Reach", change: "+60%", from: "Satisfaction score" },
+      { label: "Engagement", change: "+16.6%", from: "16.8%", to: "33.4%" },
+    ],
+    selectorMetric: "+24%",
+    selectorLabel: "Global reach",
+  },
+  {
+    industry: "AI / Meetings",
+    client: "Cogram",
+    logo: "/logos/cogram.svg",
+    website: "https://cogram.com/",
+    title: "AI Meeting Assistant Achieves Seamless Communication",
+    challenge: "Meeting summaries and notifications frequently blocked or filtered by enterprise mail servers",
+    solution: "B2B-focused email infrastructure with compliance-first approach and enhanced authentication",
+    timeline: "5 weeks",
+    metrics: [
+      { label: "Deliverability", change: "+52%", from: "42%", to: "94%" },
+      { label: "Revenue Growth", change: "+272%", from: "$18K/mo", to: "$67K/mo" },
+      { label: "Engagement", change: "+20.5%", from: "18.7%", to: "39.2%" },
+    ],
+    selectorMetric: "+52%",
+    selectorLabel: "Deliverability",
+  },
+  {
+    industry: "AI Platform",
+    client: "TensorApp.ai",
+    logo: "/logos/tensorai.svg",
+    website: "https://tensorapp.ai/",
+    title: "AI Platform Achieves 99% Inbox Rate with Infrastructure Overhaul",
+    challenge: "Complex AI platform needed reliable email infrastructure for user notifications and marketing",
+    solution: "Complete email infrastructure deployment with advanced authentication and monitoring",
+    timeline: "2 months",
+    metrics: [
+      { label: "Deliverability", change: "+34%", from: "65%", to: "99%" },
+      { label: "Revenue Growth", change: "+300%", from: "$45K/mo", to: "$180K/mo" },
+      { label: "Engagement", change: "+22.3%", from: "12.4%", to: "34.7%" },
+    ],
+    selectorMetric: "99%",
+    selectorLabel: "Inbox rate",
   },
 ]
 
@@ -196,7 +202,9 @@ export default function CaseStudies() {
                   ? <img src={cs.logo} alt={cs.client} className="cs-client-logo" />
                   : <span className="cs-client-name">{cs.client}</span>
                 }
-                <a href="/demo" className="cs-visit">Visit Website</a>
+                {cs.website && (
+                  <a href={cs.website} className="cs-visit" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                )}
               </div>
             </div>
 
