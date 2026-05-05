@@ -27,11 +27,13 @@ export async function POST(req: NextRequest) {
     })
 
     if (error) {
-      return NextResponse.json({ error: "Failed to save request" }, { status: 500 })
+      console.error("[submit-consultation] Supabase error:", error)
+      return NextResponse.json({ error: "Failed to save request", detail: error.message }, { status: 500 })
     }
 
     return NextResponse.json({ success: true }, { status: 200 })
-  } catch {
+  } catch (err) {
+    console.error("[submit-consultation] Unexpected error:", err)
     return NextResponse.json({ error: "Failed to save request" }, { status: 500 })
   }
 }

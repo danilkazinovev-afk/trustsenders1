@@ -252,6 +252,13 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .nav-links { display: none; }
   .nav-actions .btn-ghost { display: none; }
   .hamburger { display: flex; }
+  .nav-logo-img { height: 40px; }
+  .nav-inner { height: 54px; }
+}
+@media (max-width: 480px) {
+  .nav-logo-img { height: 32px; }
+  .nav-inner { height: 50px; }
+  .nav-actions .btn.btn-sm { padding: 5px 12px; font-size: 12px; }
 }
 
 /* ============================================================
@@ -393,8 +400,16 @@ a, button { -webkit-tap-highlight-color: transparent; }
   margin-bottom: 0;
 }
 
+@media (max-width: 768px) {
+  #hero { padding: 96px 0 72px; }
+  .hero-inner { margin-top: 16px; }
+}
 @media (max-width: 480px) {
-  #hero { padding: 88px 0 72px; }
+  #hero { padding: 68px 0 52px; }
+  .hero-h1-line1 { font-size: clamp(34px, 9.5vw, 46px); }
+  .hero-h1-line2 { font-size: clamp(26px, 7vw, 34px); }
+  .hero-sub { font-size: 16px; margin-bottom: 24px; }
+  .hero-proof { font-size: 15px; }
   .hero-ctas { flex-direction: column; align-items: center; }
   .hero-ctas .btn { width: 100%; justify-content: center; }
   .hero-ctas .btn.btn-primary { padding: 12px 28px; font-size: 15px; }
@@ -1368,8 +1383,10 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .demo-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
-  .demo-main { padding: 48px 0 80px; }
+  .demo-main { padding: 32px 0 60px; }
+  .demo-card { padding: 24px 18px; }
   .demo-contact-grid { grid-template-columns: 1fr; }
+  .demo-heading { font-size: clamp(22px, 6vw, 28px); }
 }
 
 /* ============================================================
@@ -1403,3 +1420,86 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .privacy-list { list-style: none; padding-left: 0; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
 .privacy-list li { font-size: 15px; line-height: 1.7; color: var(--text-body); }
 .terms-caps { font-size: 13px; color: var(--text-muted); }
+
+/* ============================================================
+   MOBILE POLISH — section & component overrides ≤480px
+============================================================ */
+@media (max-width: 480px) {
+  /* Section padding */
+  #stats    { padding: 36px 0; }
+  #clients  { padding: 20px 0; }
+  #trust    { padding: 48px 0; }
+  #problems { padding: 48px 0; }
+  #services { padding: 48px 0 20px; }
+  #why      { padding: 48px 0; }
+  #tools    { padding: 48px 0; }
+  #audience { padding: 48px 0; }
+  #founder  { padding: 48px 0; }
+  #process  { padding: 48px 0; }
+  #results  { padding: 48px 0; }
+  #case-studies { padding: 48px 0; }
+  #pricing  { padding: 48px 0; }
+  #lead-magnet { padding: 36px 0; }
+  #faq      { padding: 48px 0; }
+
+  /* Section typography */
+  .section-title { font-size: clamp(22px, 6.5vw, 32px); }
+  .section-sub   { font-size: 15px; }
+
+  /* Stats */
+  .stat-item { padding: 18px 8px; }
+  .stat-desc { font-size: 11px; }
+
+  /* Trust */
+  .trust-body p { font-size: 15px; }
+
+  /* Problems grid */
+  .problem-card { font-size: 14px; padding: 16px 14px; }
+
+  /* Why list */
+  .card-inner { font-size: 14px; padding: 12px 14px; }
+
+  /* Founder */
+  .founder-bio  { font-size: 15px; }
+  .founder-quote { font-size: 15px; padding: 14px 16px; }
+
+  /* Process */
+  .process-grid { gap: 8px; }
+  .step-card    { padding: 20px 16px; }
+
+  /* Outcome rows */
+  .outcome-row { padding: 12px 16px; }
+  .outcome-text { font-size: 15px; }
+
+  /* Case studies */
+  .cs-hero-card { padding: 20px 16px; min-height: unset; }
+  .cs-title { font-size: clamp(18px, 5.5vw, 22px); }
+  .cs-metric { padding: 12px 14px; min-width: 90px; }
+  .cs-metric-change { font-size: clamp(16px, 6vw, 22px); }
+
+  /* Pricing */
+  .pricing-card { padding: 20px 18px; }
+  .p-name { font-size: 20px; }
+
+  /* Final CTA */
+  .cta-h2  { font-size: clamp(26px, 8vw, 38px); }
+  .cta-sub { font-size: 16px; max-width: 100%; }
+  .cta-box { padding: 52px 18px; }
+
+  /* Tools note */
+  .tools-note { font-size: 14px; gap: 14px; }
+  .tools-note .btn { width: 100%; justify-content: center; }
+
+  /* Lead magnet */
+  .lead-text h3 { font-size: 18px; }
+
+  /* FAQ */
+  .faq-btn  { font-size: 15px; }
+  .faq-ans  { font-size: 14px; }
+
+  /* Privacy / Terms */
+  .privacy-main { padding: 48px 0 64px; }
+  .privacy-h2   { font-size: 16px; padding-top: 32px; margin-top: 32px; }
+  .privacy-lead { font-size: 16px; }
+  .privacy-body { font-size: 14px; }
+}
