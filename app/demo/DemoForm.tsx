@@ -13,8 +13,8 @@ const BUSINESS_TYPES = [
 
 const VOLUMES = [
   "Under 10K / month",
-  "10K – 100K / month",
-  "100K – 500K / month",
+  "10K - 100K / month",
+  "100K - 500K / month",
   "500K+ / month",
   "Not sure yet",
 ]
