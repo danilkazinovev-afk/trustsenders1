@@ -614,7 +614,7 @@ export default function BelowHeroSection() {
               </a>
             </div>
             <div className="cta-slogan">
-              <span className="accent">We Deliver.</span>&nbsp;&nbsp;You Grow.
+              We Deliver.&nbsp;&nbsp;<span className="accent">You Grow.</span>
             </div>
           </div>
           </div>
