@@ -80,7 +80,6 @@ export function TextScramble({
         scramble()
       }}
       onMouseLeave={() => setIsHovering(false)}
-      style={{ width: `${text.length}ch` }}
     >
       <span
         className={
@@ -89,19 +88,29 @@ export function TextScramble({
             : "relative font-mono text-lg tracking-widest uppercase"
         }
       >
-        {displayText.split("").map((char, i) => (
-          <span
-            key={i}
-            className={`inline-block transition-all duration-150 ${
-              isScrambling && char !== text[i]
-                ? "text-primary scale-110"
-                : "text-current"
-            }`}
-            style={{ transitionDelay: `${i * 10}ms` }}
-          >
-            {char}
-          </span>
-        ))}
+        {displayText.split("").map((char, i) => {
+          const finalChar = text[i] === " " ? " " : text[i]
+          const shownChar = char === " " ? " " : char
+          return (
+            // Fixed-width slot: reserve the final letter's width so swapping in
+            // wider/narrower scramble glyphs can't shift neighbouring letters.
+            <span key={i} className="relative inline-block">
+              <span aria-hidden="true" className="invisible">
+                {finalChar}
+              </span>
+              <span
+                className={`absolute inset-0 flex items-center justify-center transition-all duration-150 ${
+                  isScrambling && char !== text[i]
+                    ? "text-primary scale-110"
+                    : "text-current"
+                }`}
+                style={{ transitionDelay: `${i * 10}ms` }}
+              >
+                {shownChar}
+              </span>
+            </span>
+          )
+        })}
       </span>
 
       {showUnderline && (
