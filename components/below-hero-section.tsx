@@ -153,7 +153,7 @@ export default function BelowHeroSection() {
           pixelSize={screenSize.lessThan("md") ? 28 : 37}
           fadeDuration={1200}
           delay={500}
-          pixelClassName="bg-[#8ED8CE]/80 rounded-xl"
+          pixelClassName="bg-[#8ED8CE]/35 rounded-xl"
         />
       </div>
 

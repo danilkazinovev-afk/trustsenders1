@@ -137,11 +137,11 @@ export function PixelTrail({
   }, [pixelSize, isCellOverText])
 
   const spawnScattered = useCallback((col: number, row: number) => {
-    const jc = col + Math.round((Math.random() - 0.5) * 1.5)
-    const jr = row + Math.round((Math.random() - 0.5) * 1.5)
-    if (jc >= 0 && jc < cols && jr >= 0 && jr < rows) spawnPixel(jc, jr)
+    // Trail hugs the cursor: spawn the exact cell, with an occasional
+    // single neighbour for a hint of texture (kept sparse to stay subtle).
+    if (col >= 0 && col < cols && row >= 0 && row < rows) spawnPixel(col, row)
 
-    if (Math.random() < 0.38) {
+    if (Math.random() < 0.12) {
       const ec = col + Math.round((Math.random() - 0.5) * 2)
       const er = row + Math.round((Math.random() - 0.5) * 2)
       if (ec >= 0 && ec < cols && er >= 0 && er < rows) spawnPixel(ec, er)
