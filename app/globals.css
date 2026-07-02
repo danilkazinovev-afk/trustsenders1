@@ -583,7 +583,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .problem-card::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(to right, transparent 0%, rgba(217,79,59,0.12) 50%, transparent 100%); transform: skewX(-15deg); transition: left 1.1s cubic-bezier(0.4,0,0.2,1); pointer-events: none; }
 .problem-card:hover::after { left: 160%; }
 .problem-card:hover { border-color: rgba(249, 115, 22, 0.28); box-shadow: 0 0 18px rgba(249, 115, 22, 0.1); }
-.problem-dash { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #F97316; flex-shrink: 0; margin-top: 1px; }
+.problem-dash { font-size: 15px; line-height: 1.55; flex-shrink: 0; }
 .problems-cta { text-align: center; }
 @media (max-width: 900px) { .problems-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .problems-grid { grid-template-columns: 1fr; } }

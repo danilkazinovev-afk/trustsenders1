@@ -205,7 +205,7 @@ export default function BelowHeroSection() {
               "You want to scale email, but not at the cost of reputation",
             ].map((problem) => (
               <div className="problem-card" key={problem}>
-                <span className="problem-dash">✕</span>
+                <span className="problem-dash">⛔️</span>
                 {problem}
               </div>
             ))}
