@@ -134,7 +134,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   text-decoration: none;
 }
 .btn-primary {
-  background: linear-gradient(to right, #F97316 50%, #1a1a1a 50%);
+  background: linear-gradient(to right, var(--brand) 50%, #1a1a1a 50%);
   background-size: 200% 100%;
   background-position: right;
   color: #fff;
@@ -144,7 +144,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 .btn-primary:hover {
   background-position: left;
-  box-shadow: 0 0 24px rgba(249, 115, 22, 0.5), 0 0 48px rgba(249, 115, 22, 0.25), 0 0 80px rgba(249, 115, 22, 0.12);
+  box-shadow: 0 0 24px rgba(59, 184, 168, 0.5), 0 0 48px rgba(59, 184, 168, 0.25), 0 0 80px rgba(59, 184, 168, 0.12);
 }
 .btn-primary.in-view { background-position: right; }
 
@@ -1209,7 +1209,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   display: inline-flex;
   align-items: center;
   padding: 14px 28px;
-  background: linear-gradient(to right, #F97316 50%, #1a1a1a 50%);
+  background: linear-gradient(to right, var(--brand) 50%, #1a1a1a 50%);
   background-size: 200% 100%;
   background-position: right;
   color: #fff;
@@ -1221,7 +1221,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   transition: background-position 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
   white-space: nowrap;
 }
-.svc-card-cta:hover { box-shadow: 0 0 20px rgba(249, 115, 22, 0.35); }
+.svc-card-cta:hover { box-shadow: 0 0 20px rgba(59, 184, 168, 0.35); }
 .svc-card--active .svc-card-cta { background-position: left; }
 
 /* "Learn more →" hint - hidden when card is active */
