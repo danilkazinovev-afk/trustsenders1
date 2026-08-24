@@ -206,6 +206,14 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .nav-inner { height: 50px; }
   .nav-actions .btn.btn-sm { padding: 5px 12px; font-size: 12px; }
 }
+/* 320px phones: logo + CTA + burger need 307px inside a 288px row, so the
+   row overflowed and the whole page scrolled sideways. Tighten all three. */
+@media (max-width: 360px) {
+  .nav-inner { gap: 8px; }
+  .nav-logo-img { height: 20px; }
+  .nav-actions .btn.btn-sm { padding: 5px 9px; font-size: 11px; }
+  .hamburger { padding: 8px 0 8px 6px; }
+}
 
 /* ============================================================
    SECTION HELPERS
@@ -1103,6 +1111,11 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .svc-cards-sec { padding: 56px 0; }
   .svc-cards-grid { grid-template-columns: 1fr; gap: 14px; }
   .svc-card--dimmed { opacity: 1; }
+  /* "Request an Architecture Review" is nowrap and 276px wide; with 32px padding
+     that pinned the shared 1fr track to 342px and scrolled a 320px phone
+     sideways. Let it wrap and give the card a little less padding. */
+  .svc-card { padding: 24px; }
+  .svc-card-cta { white-space: normal; padding: 14px 20px; text-align: center; }
 }
 
 /* ============================================================
