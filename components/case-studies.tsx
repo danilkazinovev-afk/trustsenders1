@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useCallback } from "react"
+import { useState, useRef } from "react"
 
 interface Metric {
   label: string
@@ -132,16 +132,14 @@ export default function CaseStudies() {
   const [activeIdx, setActiveIdx] = useState(0)
   const [contentClass, setContentClass] = useState("")
   const animating = useRef(false)
-  const activeIdxRef = useRef(0)
   const touchStartX = useRef(0)
   const selRefs = useRef<(HTMLButtonElement | null)[]>([])
 
-  const go = useCallback((newIdx: number) => {
-    if (animating.current || newIdx === activeIdxRef.current) return
+  const go = (newIdx: number) => {
+    if (animating.current || newIdx === activeIdx) return
     animating.current = true
     setContentClass("cs-content--exit")
     setTimeout(() => {
-      activeIdxRef.current = newIdx
       setActiveIdx(newIdx)
       setContentClass("cs-content--enter")
       setTimeout(() => {
@@ -149,7 +147,7 @@ export default function CaseStudies() {
         animating.current = false
       }, 500)
     }, 280)
-  }, [])
+  }
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX
@@ -159,9 +157,7 @@ export default function CaseStudies() {
     const dx = e.changedTouches[0].clientX - touchStartX.current
     if (Math.abs(dx) > 50) {
       const n = CASES.length
-      go(dx < 0
-        ? (activeIdxRef.current + 1) % n
-        : (activeIdxRef.current - 1 + n) % n)
+      go(dx < 0 ? (activeIdx + 1) % n : (activeIdx - 1 + n) % n)
     }
   }
 

@@ -102,12 +102,6 @@ export default function DemoForm() {
   const [loading, setLoading] = useState(false)
   const [submitError, setSubmitError] = useState("")
 
-  const [fullName, setFullName] = useState("")
-  const [workEmail, setWorkEmail] = useState("")
-  const [companyWebsite, setCompanyWebsite] = useState("")
-  const [situation, setSituation] = useState("")
-  const [monthlyVolume, setMonthlyVolume] = useState("")
-  const [deliverabilityIssue, setDeliverabilityIssue] = useState("")
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -115,16 +109,17 @@ export default function DemoForm() {
     setSubmitError("")
 
     try {
+      const f = new FormData(e.currentTarget)
       const res = await fetch("/api/submit-consultation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          full_name: fullName,
-          work_email: workEmail,
-          company_website: companyWebsite || undefined,
-          situation: situation || undefined,
-          monthly_send_volume: monthlyVolume || undefined,
-          deliverability_issue: deliverabilityIssue || undefined,
+          full_name: f.get("name"),
+          work_email: f.get("email"),
+          company_website: f.get("company") || undefined,
+          situation: f.get("type") || undefined,
+          monthly_send_volume: f.get("volume") || undefined,
+          deliverability_issue: f.get("message") || undefined,
         }),
       })
 
@@ -170,8 +165,6 @@ export default function DemoForm() {
                       className="demo-input"
                       placeholder="Your name"
                       required
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
                     />
                   </div>
                   <div className="demo-field">
@@ -181,8 +174,6 @@ export default function DemoForm() {
                       className="demo-input"
                       placeholder="you@company.com"
                       required
-                      value={workEmail}
-                      onChange={(e) => setWorkEmail(e.target.value)}
                     />
                   </div>
                 </div>
@@ -196,8 +187,6 @@ export default function DemoForm() {
                     id="company" name="company" type="text"
                     className="demo-input"
                     placeholder="yourcompany.com"
-                    value={companyWebsite}
-                    onChange={(e) => setCompanyWebsite(e.target.value)}
                   />
                 </div>
 
@@ -208,8 +197,7 @@ export default function DemoForm() {
                       id="type" name="type"
                       className="demo-select"
                       required
-                      value={situation}
-                      onChange={(e) => setSituation(e.target.value)}
+                      defaultValue=""
                     >
                       <option value="" disabled>Select your situation</option>
                       {BUSINESS_TYPES.map((t) => (
@@ -223,8 +211,7 @@ export default function DemoForm() {
                       id="volume" name="volume"
                       className="demo-select"
                       required
-                      value={monthlyVolume}
-                      onChange={(e) => setMonthlyVolume(e.target.value)}
+                      defaultValue=""
                     >
                       <option value="" disabled>Select volume</option>
                       {VOLUMES.map((v) => (
@@ -243,8 +230,6 @@ export default function DemoForm() {
                     id="message" name="message"
                     className="demo-textarea"
                     placeholder="e.g. Emails landing in spam, domain reputation dropping after scaling, need private infrastructure for cold outreach…"
-                    value={deliverabilityIssue}
-                    onChange={(e) => setDeliverabilityIssue(e.target.value)}
                   />
                 </div>
 
