@@ -1,9 +1,6 @@
 "use client"
 
 import { useEffect } from "react"
-import { useIsMobile } from "@/hooks/use-is-mobile"
-import { PixelTrail } from "@/components/ui/pixel-trail"
-import { GooeyFilter } from "@/components/ui/gooey-filter"
 import FaqSection from "@/components/faq-section"
 import ServiceCards from "@/components/service-cards"
 import CaseStudies from "@/components/case-studies"
@@ -15,8 +12,6 @@ const CheckIcon = () => (
 )
 
 export default function BelowHeroSection() {
-  const isMobile = useIsMobile()
-
   // Reveal-on-scroll: add a class the first time each element enters view.
   // `touchOnly` entries are the mobile-only CTA sweep (no hover to trigger it).
   useEffect(() => {
@@ -88,20 +83,6 @@ export default function BelowHeroSection() {
 
   return (
     <div>
-      {/* ── PIXEL TRAIL ZONE (trust → service cards) ─────── */}
-      <div className="relative">
-      <GooeyFilter id="gooey-filter-pixel-trail" strength={5} />
-      <div
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{ filter: "url(#gooey-filter-pixel-trail)" }}
-      >
-        <PixelTrail
-          pixelSize={isMobile ? 28 : 37}
-          delay={500}
-          pixelClassName="bg-[#8ED8CE]/35 rounded-xl"
-        />
-      </div>
-
       {/* ── TRUST & POSITIONING ──────────────────────────── */}
       <section id="trust" aria-labelledby="trust-h" className="relative z-10">
         <div className="container">
@@ -164,10 +145,6 @@ export default function BelowHeroSection() {
           </div>
         </div>
       </section>
-
-      </div>{/* end pixel trail zone */}
-
-      {/* ── NO PIXEL TRAIL BELOW ─────────────────────────── */}
 
       {/* ── FLEXIBLE APPROACH ────────────────────────────── */}
       <section id="services" aria-labelledby="flexible-h" className="relative z-10">
