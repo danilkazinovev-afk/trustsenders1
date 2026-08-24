@@ -19,14 +19,7 @@ export default function Home() {
             <h1 className="hero-h1" id="hero-h1">
               <span className="hero-h1-line1">
                 Deliverability &amp;{" "}
-                <TextScramble
-                  text="beyond"
-                  className="hero-h1-accent"
-                  autoStart
-                  inheritTypography
-                  showUnderline={false}
-                  showGlow={false}
-                />
+                <TextScramble text="beyond" className="hero-h1-accent" />
               </span>
               <br />
               <span className="hero-h1-line2">We deliver. <span className="hero-h1-accent">You grow</span></span>

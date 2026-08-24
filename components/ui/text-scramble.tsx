@@ -4,27 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react"
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*"
 
-interface TextScrambleProps {
-  text: string
-  className?: string
-
-  autoStart?: boolean
-  inheritTypography?: boolean
-
-  showUnderline?: boolean
-  showGlow?: boolean
-}
-
-export function TextScramble({
-  text,
-  className = "",
-  autoStart = false,
-  inheritTypography = false,
-  showUnderline = true,
-  showGlow = true,
-}: TextScrambleProps) {
+export function TextScramble({ text, className = "" }: { text: string; className?: string }) {
   const [displayText, setDisplayText] = useState(text)
-  const [isHovering, setIsHovering] = useState(false)
   const [isScrambling, setIsScrambling] = useState(false)
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -41,19 +22,18 @@ export function TextScramble({
     intervalRef.current = setInterval(() => {
       frameRef.current++
 
-      const progress = frameRef.current / duration
-      const revealedLength = Math.floor(progress * text.length)
+      const revealedLength = Math.floor((frameRef.current / duration) * text.length)
 
-      const newText = text
-        .split("")
-        .map((char, i) => {
-          if (char === " ") return " "
-          if (i < revealedLength) return text[i]
-          return CHARS[Math.floor(Math.random() * CHARS.length)]
-        })
-        .join("")
-
-      setDisplayText(newText)
+      setDisplayText(
+        text
+          .split("")
+          .map((char, i) =>
+            char === " " || i < revealedLength
+              ? text[i]
+              : CHARS[Math.floor(Math.random() * CHARS.length)]
+          )
+          .join("")
+      )
 
       if (frameRef.current >= duration) {
         if (intervalRef.current) clearInterval(intervalRef.current)
@@ -65,72 +45,36 @@ export function TextScramble({
   }, [text])
 
   useEffect(() => {
-    if (autoStart) scramble()
-
+    scramble()
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
     }
-  }, [autoStart, scramble])
+  }, [scramble])
 
   return (
     <div
-      className={`group relative inline-flex flex-col cursor-pointer select-none ${className}`}
-      onMouseEnter={() => {
-        setIsHovering(true)
-        scramble()
-      }}
-      onMouseLeave={() => setIsHovering(false)}
+      className={`relative inline-flex flex-col cursor-pointer select-none ${className}`}
+      onMouseEnter={scramble}
     >
-      <span
-        className={
-          inheritTypography
-            ? "relative whitespace-nowrap leading-none"
-            : "relative font-mono text-lg tracking-widest uppercase"
-        }
-      >
-        {displayText.split("").map((char, i) => {
-          const finalChar = text[i] === " " ? " " : text[i]
-          const shownChar = char === " " ? " " : char
-          return (
-            // Fixed-width slot: reserve the final letter's width so swapping in
-            // wider/narrower scramble glyphs can't shift neighbouring letters.
-            <span key={i} className="relative inline-block">
-              <span aria-hidden="true" className="invisible">
-                {finalChar}
-              </span>
-              <span
-                className={`absolute inset-0 flex items-center justify-center transition-all duration-150 ${
-                  isScrambling && char !== text[i]
-                    ? "text-primary scale-110"
-                    : "text-current"
-                }`}
-                style={{ transitionDelay: `${i * 10}ms` }}
-              >
-                {shownChar}
-              </span>
+      <span className="relative whitespace-nowrap leading-none">
+        {displayText.split("").map((char, i) => (
+          // Fixed-width slot: reserve the final letter's width so swapping in
+          // wider/narrower scramble glyphs can't shift neighbouring letters.
+          <span key={i} className="relative inline-block">
+            <span aria-hidden="true" className="invisible">
+              {text[i] === " " ? " " : text[i]}
             </span>
-          )
-        })}
+            <span
+              className={`absolute inset-0 flex items-center justify-center transition-all duration-150 ${
+                isScrambling && char !== text[i] ? "scale-110" : ""
+              }`}
+              style={{ transitionDelay: `${i * 10}ms` }}
+            >
+              {char === " " ? " " : char}
+            </span>
+          </span>
+        ))}
       </span>
-
-      {showUnderline && (
-        <span className="relative h-px w-full mt-2 overflow-hidden">
-          <span
-            className={`absolute inset-0 bg-foreground transition-transform duration-500 ease-out origin-left ${
-              isHovering ? "scale-x-100" : "scale-x-0"
-            }`}
-          />
-          <span className="absolute inset-0 bg-border" />
-        </span>
-      )}
-
-      {showGlow && (
-        <span
-          className={`absolute -inset-4 rounded-lg bg-primary/5 transition-opacity duration-300 -z-10 ${
-            isHovering ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      )}
     </div>
   )
 }

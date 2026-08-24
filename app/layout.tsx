@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Space_Mono } from "next/font/google";
 import "./globals.css";
-import Providers from "@/components/providers";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -39,7 +38,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        {children}
       </body>
     </html>
   );
