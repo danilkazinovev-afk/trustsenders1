@@ -164,24 +164,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .btn-lg { padding: 12px 28px; font-size: 15px; }
 
 /* ============================================================
-   ANNOUNCEMENT BAR
-============================================================ */
-#announce-bar {
-  background: var(--brand-light);
-  border-bottom: 1px solid rgba(59,184,168,0.2);
-  padding: 9px 16px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--brand-deep);
-  position: relative;
-}
-#announce-bar a { color: var(--text-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; transition: color 0.15s; }
-#announce-bar a:hover { color: var(--brand-deep); }
-.dismiss-bar { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 17px; line-height: 1; color: var(--brand-deep); padding: 4px 6px; opacity: 0.6; transition: opacity 0.15s; }
-.dismiss-bar:hover { opacity: 1; }
-
-/* ============================================================
    NAVIGATION
 ============================================================ */
 #nav {
