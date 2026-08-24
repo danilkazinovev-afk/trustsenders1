@@ -89,19 +89,19 @@ export default function BelowHeroSection() {
           <div className="trust-layout">
             <div>
               <h2 className="trust-heading" id="trust-h">
-                Deliverability is not just SPF, DKIM, and DMARC.
+                Deliverability needs more everyday attention than ever.
               </h2>
             </div>
             <div className="trust-body">
               <p>
-                It is about <strong>reputation, sending behavior, infrastructure quality, mailbox provider trust</strong>, and the ability to scale without breaking what already works.
+                It&rsquo;s not just SPF, DKIM, and DMARC. It&rsquo;s <strong>reputation, sending behavior, infrastructure quality, and whether mailbox providers actually trust you</strong>{" — "}plus the ability to grow volume without breaking what already works.
               </p>
-              <p>Trust Senders helps businesses take control of that entire system.</p>
+              <p>Trust Senders helps you take control of that whole system.</p>
               <p>
-                We work with companies that need more than basic mailbox setup. We help build, fix, recover, and support sending environments that are <strong>stable, scalable, and built for long-term performance</strong>.
+                We work with companies that need more than a basic mailbox setup. We build, fix, and recover sending environments, then stay involved to keep them stable as you scale.
               </p>
               <p>
-                This is not &ldquo;buy inboxes and hope for the best.&rdquo; This is expert-led infrastructure, deliverability strategy, and ongoing operational support.
+                This isn&rsquo;t &ldquo;buy inboxes and hope for the best.&rdquo; It&rsquo;s expert-led infrastructure, real deliverability strategy, and ongoing support from people who run this every day.
               </p>
             </div>
           </div>
