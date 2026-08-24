@@ -934,9 +934,9 @@ a, button { -webkit-tap-highlight-color: transparent; }
    FOOTER
 ============================================================ */
 #footer { background: var(--surface); border-top: 1px solid var(--border); padding: 60px 0 28px; }
-.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
 .footer-logo-img { height: 30px; width: auto; display: block; margin-bottom: 9px; }
-.footer-tagline { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 18px; max-width: 250px; }
+.footer-tagline { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 18px; max-width: 380px; }
 .footer-col h4 { font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: var(--text-primary); margin-bottom: 14px; }
 .footer-links { display: flex; flex-direction: column; gap: 8px; }
 .footer-links a { font-size: 14px; color: var(--text-muted); transition: color 0.15s; }

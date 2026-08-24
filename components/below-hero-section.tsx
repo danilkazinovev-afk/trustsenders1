@@ -536,7 +536,9 @@ export default function BelowHeroSection() {
             <div className="footer-brand">
               <img src="/logos/trustsenders-logo.svg" alt="TrustSenders" className="footer-logo-img" />
               <p className="footer-tagline">
-                Expert email deliverability consulting and infrastructure. We deliver. You grow.
+                Expert email deliverability consulting and infrastructure.
+                <br />
+                We deliver. You grow.
               </p>
               <a href="/demo" className="btn btn-dark-teal btn-sm">Book a Free Review</a>
             </div>
