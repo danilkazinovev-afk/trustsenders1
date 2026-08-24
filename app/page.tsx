@@ -12,8 +12,6 @@ export default function Home() {
 
       {/* ── HERO ─────────────────────────────────────────── */}
       <section id="hero" aria-labelledby="hero-h1">
-        <div className="aurora-1" aria-hidden="true" />
-        <div className="aurora-2" aria-hidden="true" />
         <div className="container">
           <div className="hero-inner">
             <h1 className="hero-h1" id="hero-h1">
