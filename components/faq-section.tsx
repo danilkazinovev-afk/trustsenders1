@@ -1,7 +1,3 @@
-"use client";
-
-import { useRef, useState } from "react";
-
 const col1 = [
   {
     q: "Do you only work with cold email?",
@@ -49,49 +45,16 @@ const col2 = [
 ];
 
 function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  const bodyRef = useRef<HTMLDivElement>(null);
-
-  const toggle = () => {
-    const el = bodyRef.current;
-    if (!el) return;
-    if (!open) {
-      el.style.height = "0px";
-      el.style.display = "block";
-      const h = el.scrollHeight;
-      requestAnimationFrame(() => {
-        el.style.height = h + "px";
-      });
-    } else {
-      el.style.height = el.scrollHeight + "px";
-      requestAnimationFrame(() => {
-        el.style.height = "0px";
-      });
-    }
-    setOpen((v) => !v);
-  };
-
   return (
-    <div className={`faq-item${open ? " open" : ""}`}>
-      <button className="faq-btn" onClick={toggle} aria-expanded={open}>
+    <details className="faq-item">
+      <summary className="faq-btn">
         {q}
         <span className="faq-ico" aria-hidden="true">+</span>
-      </button>
-      <div
-        ref={bodyRef}
-        className="faq-ans"
-        style={{
-          height: 0,
-          overflow: "hidden",
-          display: "block",
-          transition: "height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease",
-          opacity: open ? 1 : 0,
-          paddingBottom: open ? 18 : 0,
-        }}
-      >
-        {a}
+      </summary>
+      <div className="faq-ans-clip">
+        <p className="faq-ans">{a}</p>
       </div>
-    </div>
+    </details>
   );
 }
 

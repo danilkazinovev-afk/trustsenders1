@@ -1,13 +1,12 @@
 import Nav from "@/components/nav";
 import StatsSection from "@/components/stats-section";
 import BelowHeroSection from "@/components/below-hero-section";
-import ScrollProgress from "@/components/scroll-progress";
 import { TextScramble } from "@/components/ui/text-scramble";
 
 export default function Home() {
   return (
     <>
-      <ScrollProgress />
+      <div className="scroll-progress" aria-hidden="true" />
       <Nav />
 
       {/* ── HERO ─────────────────────────────────────────── */}
