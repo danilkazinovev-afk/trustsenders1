@@ -404,7 +404,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
    SERVICES
 ============================================================ */
 #services { padding: 88px 0 32px; border-top: 1px solid var(--border); }
-#services .section-tag { font-size: 13px; }
 #services .section-title { font-size: clamp(27px, 3.2vw, 41px); }
 #services .section-sub { font-size: 18px; }
 @media (max-width: 768px) {

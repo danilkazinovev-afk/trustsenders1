@@ -60,7 +60,6 @@ export default function FaqSection() {
   return (
     <section id="faq" aria-labelledby="faq-h">
       <div className="container">
-        <div className="section-tag">Questions</div>
         <h2 className="section-title" id="faq-h">
           Frequently asked questions.
         </h2>

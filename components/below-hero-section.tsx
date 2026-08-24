@@ -88,7 +88,6 @@ export default function BelowHeroSection() {
         <div className="container">
           <div className="trust-layout">
             <div>
-              <div className="section-tag">The Real Problem</div>
               <h2 className="trust-heading" id="trust-h">
                 Deliverability is not just SPF, DKIM, and DMARC.
               </h2>
@@ -113,7 +112,6 @@ export default function BelowHeroSection() {
       {/* ── PROBLEMS WE SOLVE ────────────────────────────── */}
       <section id="problems" aria-labelledby="problems-h" className="relative z-10">
         <div className="container">
-          <div className="section-tag">Common Issues</div>
           <h2 className="section-title" id="problems-h">Problems we fix.</h2>
           <p className="problems-intro">If any of these sound familiar, you are in the right place.</p>
 
@@ -149,7 +147,6 @@ export default function BelowHeroSection() {
       {/* ── FLEXIBLE APPROACH ────────────────────────────── */}
       <section id="services" aria-labelledby="flexible-h" className="relative z-10">
         <div className="container">
-          <div className="section-tag">What We Do</div>
           <h2 className="section-title" id="flexible-h">Flexible Approach.</h2>
           <p className="section-sub">We work based on client situation, not generic approach.</p>
         </div>
@@ -160,7 +157,6 @@ export default function BelowHeroSection() {
       {/* ── WHY TRUST SENDERS ────────────────────────────── */}
       <section id="why" aria-labelledby="why-h" className="relative z-10">
         <div className="container">
-          <div className="section-tag">Why Us</div>
           <h2 className="section-title" id="why-h" style={{ maxWidth: 580 }}>
             Why teams trust us with deliverability.
           </h2>
@@ -201,7 +197,6 @@ export default function BelowHeroSection() {
       {/* ── TOOLS ────────────────────────────────────────── */}
       <section id="tools" aria-labelledby="tools-h" className="relative z-10">
         <div className="container">
-          <div className="section-tag">Compatibility</div>
           <h2 className="section-title" id="tools-h" style={{ maxWidth: 560 }}>
             We work with the tools you already use.
           </h2>
@@ -246,7 +241,6 @@ export default function BelowHeroSection() {
       {/* ── WHO WE WORK WITH ─────────────────────────────── */}
       <section id="audience" aria-labelledby="audience-h" className="relative z-10">
         <div className="container">
-          <div className="section-tag">Who We Help</div>
           <h2 className="section-title" id="audience-h" style={{ maxWidth: 560 }}>
             Built for teams that take email seriously.
           </h2>
@@ -287,7 +281,6 @@ export default function BelowHeroSection() {
       {/* ── FOUNDER ──────────────────────────────────────── */}
       <section id="founder" aria-labelledby="founder-h" className="relative z-10">
         <div className="container">
-          <div className="section-tag">The Operator Behind the Work</div>
           <h2
             className="section-title"
             id="founder-h"
@@ -322,7 +315,6 @@ export default function BelowHeroSection() {
       {/* ── PROCESS ──────────────────────────────────────── */}
       <section id="process" aria-labelledby="process-h" className="relative z-10">
         <div className="container">
-          <div className="section-tag">How We Work</div>
           <h2 className="section-title" id="process-h" style={{ maxWidth: 500 }}>
             A structured approach to every engagement.
           </h2>
@@ -391,7 +383,6 @@ export default function BelowHeroSection() {
       {/* ── RESULTS ──────────────────────────────────────── */}
       <section id="results" aria-labelledby="results-h" className="relative z-10">
         <div className="container">
-          <div className="section-tag">Client Outcomes</div>
           <h2 className="section-title" id="results-h" style={{ maxWidth: 500 }}>
             Results our clients see.
           </h2>
@@ -450,7 +441,6 @@ export default function BelowHeroSection() {
       {/* ── PRICING ──────────────────────────────────────── */}
       <section id="pricing" aria-labelledby="pricing-h" className="relative z-10">
         <div className="container">
-          <div className="section-tag">Engagement Options</div>
           <h2 className="section-title" id="pricing-h">Find the right engagement.</h2>
           <p className="pricing-intro">Enough information to self-qualify. Exact scope discussed during your free review.</p>
 

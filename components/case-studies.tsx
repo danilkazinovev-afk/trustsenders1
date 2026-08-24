@@ -180,7 +180,6 @@ export default function CaseStudies() {
   return (
     <section id="case-studies" aria-labelledby="cs-h" className="relative z-10">
       <div className="container cs-container">
-        <div className="section-tag">Case Studies</div>
         <h2 className="section-title" id="cs-h">What we&rsquo;ve delivered.</h2>
 
         {/* ── Hero card ──────────────────────────────── */}
