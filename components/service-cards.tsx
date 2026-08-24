@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useScreenSize } from "@/hooks/use-screen-size"
+import { useIsMobile } from "@/hooks/use-is-mobile"
 
 const CARDS = [
   {
@@ -72,8 +72,7 @@ const CARDS = [
 
 export default function ServiceCards() {
   const [active, setActive] = useState<number | null>(null)
-  const screenSize = useScreenSize()
-  const isMobile = screenSize.lessThan("md")
+  const isMobile = useIsMobile()
 
   const toggle = (i: number) => setActive((prev) => (prev === i ? null : i))
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import { useScreenSize } from "@/hooks/use-screen-size"
+import { useIsMobile } from "@/hooks/use-is-mobile"
 import { PixelTrail } from "@/components/ui/pixel-trail"
 import { GooeyFilter } from "@/components/ui/gooey-filter"
 import FaqSection from "@/components/faq-section"
@@ -15,93 +15,39 @@ const CheckIcon = () => (
 )
 
 export default function BelowHeroSection() {
-  const screenSize = useScreenSize()
+  const isMobile = useIsMobile()
 
+  // Reveal-on-scroll: add a class the first time each element enters view.
+  // `touchOnly` entries are the mobile-only CTA sweep (no hover to trigger it).
   useEffect(() => {
-    const btns = document.querySelectorAll<HTMLElement>(".btn-primary")
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add("in-view")
-        })
-      },
-      { threshold: 0.5 }
-    )
-    btns.forEach((btn) => observer.observe(btn))
-    return () => observer.disconnect()
-  }, [])
+    const REVEALS: [selector: string, className: string, threshold: number, touchOnly?: boolean][] = [
+      [".btn-primary", "in-view", 0.5],
+      [".btn-primary", "ts-sweep-once", 0.35, true],
+      ["[data-outcome-row]", "outcome-row--visible", 0.15],
+      ["[data-tools-wrap]", "tools-wrap--visible", 0.15],
+      [".why-list", "why-list--visible", 0.2],
+    ]
+    const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches
 
-  useEffect(() => {
-    if (typeof window === "undefined") return
-    const isTouch = window.matchMedia?.("(hover: none) and (pointer: coarse)")?.matches
-    if (!isTouch) return
-
-    const ctas = Array.from(document.querySelectorAll<HTMLElement>(".btn.btn-primary"))
-
-    if (ctas.length === 0) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return
-          e.target.classList.add("ts-sweep-once")
-          observer.unobserve(e.target)
-        })
-      },
-      { threshold: 0.35 }
-    )
-
-    ctas.forEach((cta) => observer.observe(cta))
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const rows = document.querySelectorAll<HTMLElement>("[data-outcome-row]")
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("outcome-row--visible")
+    const observers = REVEALS.flatMap(([selector, className, threshold, touchOnly]) => {
+      if (touchOnly && !isTouch) return []
+      const targets = document.querySelectorAll<HTMLElement>(selector)
+      if (targets.length === 0) return []
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue
+            e.target.classList.add(className)
             observer.unobserve(e.target)
           }
-        })
-      },
-      { threshold: 0.15 }
-    )
-    rows.forEach((row) => observer.observe(row))
-    return () => observer.disconnect()
-  }, [])
+        },
+        { threshold }
+      )
+      targets.forEach((t) => observer.observe(t))
+      return [observer]
+    })
 
-  useEffect(() => {
-    const wrap = document.querySelector<HTMLElement>("[data-tools-wrap]")
-    if (!wrap) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          wrap.classList.add("tools-wrap--visible")
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.15 }
-    )
-    observer.observe(wrap)
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const list = document.querySelector<HTMLElement>(".why-list")
-    if (!list) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          list.classList.add("why-list--visible")
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.2 }
-    )
-    observer.observe(list)
-    return () => observer.disconnect()
+    return () => observers.forEach((o) => o.disconnect())
   }, [])
 
   useEffect(() => {
@@ -150,7 +96,7 @@ export default function BelowHeroSection() {
         style={{ filter: "url(#gooey-filter-pixel-trail)" }}
       >
         <PixelTrail
-          pixelSize={screenSize.lessThan("md") ? 28 : 37}
+          pixelSize={isMobile ? 28 : 37}
           fadeDuration={1200}
           delay={500}
           pixelClassName="bg-[#8ED8CE]/35 rounded-xl"
