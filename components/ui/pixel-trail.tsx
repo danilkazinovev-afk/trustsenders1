@@ -1,12 +1,12 @@
 "use client"
 
 import { useEffect, useRef, useCallback, useState } from "react"
-import { motion } from "framer-motion"
-import { v4 as uuidv4 } from "uuid"
 import { useDebouncedDimensions } from "@/hooks/use-debounced-dimensions"
 
+let nextPixelId = 0
+
 interface Pixel {
-  id: string
+  id: number
   x: number
   y: number
   dying?: boolean
@@ -16,7 +16,6 @@ interface Pixel {
 
 interface PixelTrailProps {
   pixelSize?: number
-  fadeDuration?: number
   delay?: number
   pixelClassName?: string
 }
@@ -69,7 +68,6 @@ const ATTRACT_DURATION = 0.45
 
 export function PixelTrail({
   pixelSize = 32,
-  fadeDuration = 1200,
   delay = 500,
   pixelClassName = "bg-white",
 }: PixelTrailProps) {
@@ -111,7 +109,7 @@ export function PixelTrail({
 
   const spawnPixel = useCallback((col: number, row: number) => {
     if (isCellOverText(col, row)) return
-    const id = uuidv4()
+    const id = nextPixelId++
     const lingerMs = 60 + Math.random() * 600
 
     setPixels((prev) => [...prev, { id, x: col * pixelSize, y: row * pixelSize }])
@@ -193,21 +191,22 @@ export function PixelTrail({
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
       {pixels.map((pixel) => (
-        <motion.div
+        <div
           key={pixel.id}
           className={`absolute ${pixelClassName}`}
-          style={{ left: pixel.x, top: pixel.y, width: pixelSize, height: pixelSize }}
-          initial={{ opacity: 1, x: 0, y: 0 }}
-          animate={
-            pixel.dying
-              ? { opacity: 0, x: pixel.tx ?? 0, y: pixel.ty ?? 0 }
-              : { opacity: 1, x: 0, y: 0 }
-          }
-          transition={
-            pixel.dying
-              ? { duration: ATTRACT_DURATION, ease: [0.4, 0, 1, 1] }
-              : { duration: 0 }
-          }
+          style={{
+            left: pixel.x,
+            top: pixel.y,
+            width: pixelSize,
+            height: pixelSize,
+            opacity: pixel.dying ? 0 : 1,
+            transform: pixel.dying ? `translate(${pixel.tx ?? 0}px, ${pixel.ty ?? 0}px)` : undefined,
+            // Pixels always paint once un-dying (linger is >= 60ms), so the
+            // transition has an initial frame to animate away from.
+            transition: pixel.dying
+              ? `opacity ${ATTRACT_DURATION}s cubic-bezier(0.4,0,1,1), transform ${ATTRACT_DURATION}s cubic-bezier(0.4,0,1,1)`
+              : undefined,
+          }}
         />
       ))}
     </div>

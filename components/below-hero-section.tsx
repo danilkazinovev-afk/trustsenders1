@@ -97,7 +97,6 @@ export default function BelowHeroSection() {
       >
         <PixelTrail
           pixelSize={isMobile ? 28 : 37}
-          fadeDuration={1200}
           delay={500}
           pixelClassName="bg-[#8ED8CE]/35 rounded-xl"
         />
