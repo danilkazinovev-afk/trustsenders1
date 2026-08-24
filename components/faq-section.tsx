@@ -51,9 +51,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         {q}
         <span className="faq-ico" aria-hidden="true">+</span>
       </summary>
-      <div className="faq-ans-clip">
-        <p className="faq-ans">{a}</p>
-      </div>
+      <p className="faq-ans">{a}</p>
     </details>
   );
 }
