@@ -228,6 +228,7 @@ export default function DemoForm() {
                   </label>
                   <textarea
                     id="message" name="message"
+                    maxLength={2400}
                     className="demo-textarea"
                     placeholder="e.g. Emails landing in spam, domain reputation dropping after scaling, need private infrastructure for cold outreach…"
                   />

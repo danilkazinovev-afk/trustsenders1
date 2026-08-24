@@ -31,3 +31,32 @@ assert.match(nasty, /5 &gt; 3 &amp;&amp; 2 &lt; 4/)
 assert.strictEqual((nasty.match(/<b>/g) ?? []).length, 4) // title + 3 labels
 
 console.log("message.test.ts: all assertions passed")
+
+// --- length: Telegram rejects >4096 with "message is too long" ---
+import { TELEGRAM_LIMIT } from "./message.ts"
+
+const huge = buildMessage({
+  full_name: "x".repeat(5000), work_email: "y".repeat(5000),
+  company_website: "z".repeat(5000), situation: "s".repeat(5000),
+  monthly_send_volume: "v".repeat(5000), deliverability_issue: "d".repeat(9000),
+})
+assert.ok(huge.length < TELEGRAM_LIMIT, `oversized message: ${huge.length} >= ${TELEGRAM_LIMIT}`)
+assert.match(huge, /…/)
+
+// worst case for escaping: every char expands 5x ("&" -> "&amp;")
+const amps = buildMessage({
+  full_name: "&".repeat(5000), work_email: "&".repeat(5000),
+  company_website: "&".repeat(5000), situation: "&".repeat(5000),
+  monthly_send_volume: "&".repeat(5000), deliverability_issue: "&".repeat(9000),
+})
+assert.ok(amps.length < TELEGRAM_LIMIT, `oversized when escaped: ${amps.length}`)
+// truncation must never leave a partial entity ("&am") behind
+assert.doesNotMatch(amps, /&(?!amp;|lt;|gt;)/)
+
+// blank / whitespace-only values are dropped, not rendered as empty rows
+const blanks = buildMessage({ full_name: "Bob", work_email: "b@x.io",
+  company_website: "   ", situation: "", deliverability_issue: null })
+assert.strictEqual(blanks.split("\n").length, 4)
+assert.doesNotMatch(blanks, /Company|Describes|issue/)
+
+console.log("length + blank-field assertions passed")

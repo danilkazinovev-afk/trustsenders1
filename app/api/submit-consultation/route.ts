@@ -1,14 +1,27 @@
 import { NextRequest, NextResponse } from "next/server"
-import { buildMessage } from "./message"
+import { buildMessage, type Submission } from "./message"
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json()
-    const { full_name, work_email } = body
+    let body: unknown
+    try {
+      body = await req.json()
+    } catch {
+      return NextResponse.json({ error: "Invalid request body" }, { status: 400 })
+    }
+    if (typeof body !== "object" || body === null || Array.isArray(body)) {
+      return NextResponse.json({ error: "Invalid request body" }, { status: 400 })
+    }
 
-    if (!full_name || !work_email || !EMAIL_RE.test(work_email)) {
+    const { full_name, work_email } = body as Record<string, unknown>
+
+    // Non-strings would stringify to junk like "[object Object]".
+    if (typeof full_name !== "string" || typeof work_email !== "string") {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
+    }
+    if (!full_name.trim() || !EMAIL_RE.test(work_email.trim())) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
@@ -25,7 +38,7 @@ export async function POST(req: NextRequest) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         chat_id: chatId,
-        text: buildMessage(body),
+        text: buildMessage(body as Submission),
         parse_mode: "HTML",
         disable_web_page_preview: true,
       }),

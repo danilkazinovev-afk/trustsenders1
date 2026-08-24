@@ -104,12 +104,15 @@ export default function ServiceCards() {
                   ? {
                       onMouseEnter: () => setActive(i),
                       onMouseLeave: () => setActive(null),
+                      // Keyboard equivalent of hover. NOT on touch: tapping fires
+                      // focus first, and the click below would toggle it straight
+                      // back off, so the card could never open.
+                      onFocus: () => setActive(i),
+                      onBlur: () => setActive(null),
                     }
                   : {
                       onClick: () => toggle(i),
                     })}
-                onFocus={() => setActive(i)}
-                onBlur={() => setActive(null)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault()
