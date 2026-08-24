@@ -3,7 +3,7 @@
 import { useEffect, useRef, useCallback, useState } from "react"
 import { motion } from "framer-motion"
 import { v4 as uuidv4 } from "uuid"
-import { useDebouncedDimensions } from "@/components/hooks/use-debounced-dimensions"
+import { useDebouncedDimensions } from "@/hooks/use-debounced-dimensions"
 
 interface Pixel {
   id: string
