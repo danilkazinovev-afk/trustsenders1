@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 96" width="600" height="96" role="img" aria-label="TrustSenders">
+  <title>TrustSenders</title>
+  <g fill="#0d0d0d">
+    <path d="M0 0 L59 0 L59 96 L33 96 L33 52 L56 26 L0 26 Z"></path>
+    <path d="M60 0 L97 0 L97 26 L77 26 Z"></path>
+  </g>
+  <text x="129" y="81" textLength="472" lengthAdjust="spacingAndGlyphs" font-family="'DM Sans','Helvetica Neue',Arial,sans-serif" font-size="81" font-weight="500" letter-spacing="-1" fill="#0d0d0d">TrustSenders</text>
+</svg>
