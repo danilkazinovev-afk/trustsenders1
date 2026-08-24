@@ -246,31 +246,27 @@ export default function BelowHeroSection() {
           </h2>
 
           <div className="audience-grid">
-            <div className="audience-card" style={{ "--aud-color": "124,92,255", "--aud-hex": "#6d4de0" } as React.CSSProperties}>
+            <div className="audience-card" style={{ "--aud-color": "124,92,255" } as React.CSSProperties}>
               <div className="aud-hdr">
                 <h3>Outbound Sales Teams</h3>
-                <div className="aud-tag">Segment 01</div>
               </div>
               <p>Scale cold outreach safely, protect domain reputation, and build infrastructure that keeps up with your pipeline targets - without landing in spam.</p>
             </div>
-            <div className="audience-card" style={{ "--aud-color": "6,182,212", "--aud-hex": "#0e93aa" } as React.CSSProperties}>
+            <div className="audience-card" style={{ "--aud-color": "6,182,212" } as React.CSSProperties}>
               <div className="aud-hdr">
                 <h3>B2C Marketing Teams</h3>
-                <div className="aud-tag">Segment 02</div>
               </div>
               <p>Improve inbox placement for newsletters, transactional emails, and promotional campaigns across large subscriber bases where every percent of deliverability matters.</p>
             </div>
-            <div className="audience-card" style={{ "--aud-color": "236,72,153", "--aud-hex": "#d6357f" } as React.CSSProperties}>
+            <div className="audience-card" style={{ "--aud-color": "236,72,153" } as React.CSSProperties}>
               <div className="aud-hdr">
                 <h3>Agencies &amp; Consultancies</h3>
-                <div className="aud-tag">Segment 03</div>
               </div>
               <p>Manage deliverability across multiple client accounts with expert support, multi-domain strategy, and infrastructure that properly separates risk between clients.</p>
             </div>
-            <div className="audience-card" style={{ "--aud-color": "245,158,11", "--aud-hex": "#c47f0a" } as React.CSSProperties}>
+            <div className="audience-card" style={{ "--aud-color": "245,158,11" } as React.CSSProperties}>
               <div className="aud-hdr">
                 <h3>Enterprise &amp; IT Teams</h3>
-                <div className="aud-tag">Segment 04</div>
               </div>
               <p>Build compliant, private sending environments with dedicated IPs, custom SMTP architecture, full infrastructure control, and the visibility your compliance team requires.</p>
             </div>
