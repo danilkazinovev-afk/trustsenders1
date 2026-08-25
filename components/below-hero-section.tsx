@@ -144,16 +144,6 @@ export default function BelowHeroSection() {
         </div>
       </section>
 
-      {/* ── FLEXIBLE APPROACH ────────────────────────────── */}
-      <section id="services" aria-labelledby="flexible-h" className="relative z-10">
-        <div className="container">
-          <h2 className="section-title" id="flexible-h">Flexible Approach.</h2>
-          <p className="section-sub">We work based on client situation, not generic approach.</p>
-        </div>
-      </section>
-
-      <ServiceCards />
-
       {/* ── WHY TRUST SENDERS ────────────────────────────── */}
       <section id="why" aria-labelledby="why-h" className="relative z-10">
         <div className="container">
@@ -193,6 +183,16 @@ export default function BelowHeroSection() {
           </div>
         </div>
       </section>
+
+      {/* ── FLEXIBLE APPROACH ────────────────────────────── */}
+      <section id="services" aria-labelledby="flexible-h" className="relative z-10">
+        <div className="container">
+          <h2 className="section-title" id="flexible-h">Flexible Approach.</h2>
+          <p className="section-sub">We work based on client situation, not generic approach.</p>
+        </div>
+      </section>
+
+      <ServiceCards />
 
       {/* ── TOOLS ────────────────────────────────────────── */}
       <section id="tools" aria-labelledby="tools-h" className="relative z-10">
