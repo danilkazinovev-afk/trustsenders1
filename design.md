@@ -1,6 +1,8 @@
 # TrustSenders Design System
 
 > Source of truth: [app/globals.css](app/globals.css), [app/layout.tsx](app/layout.tsx), and [tailwind.config.ts](tailwind.config.ts).
+> Project-level notes, deployment and integration details live in [CLAUDE.md](CLAUDE.md).
+> Last reconciled against the code 2026-08-26.
 > TrustSenders is an email-deliverability / cold-email-infrastructure agency site. The design language is clean, confident, and "operational" — a white, data-dense surface with a calm **teal** brand and a high-energy **orange** action accent. The signature interaction is a split-fill "sweep" that wipes a button from orange into near-black on hover.
 
 ---
@@ -14,7 +16,7 @@ A luminous white (`#ffffff`) canvas with near-black (`#0d0d0d`) text. The person
 
 The page alternates white sections separated by hairline `rgba(0,0,0,0.05)` borders. Headlines are set in **Clash Display** (bold, condensed-feeling display type), body in **DM Sans**, and all technical labels / numerals in **Space Mono** (uppercase, tracked-out — the "terminal" voice that signals data and precision).
 
-There is an **aurora** gradient system (teal radial washes behind the hero and nav) that is currently **disabled** in CSS but left in place — see `.aurora-1`, `.aurora-2`, `#nav::before` (all `display: none !important`).
+An **aurora** gradient system (teal radial washes behind the hero and nav) used to sit here, disabled. It was deleted in the 2026-08 cleanup along with the `.aurora-1` / `.aurora-2` / `#nav::before` rules — do not look for it.
 
 **Key characteristics**
 - Three-font system: Clash Display (headings) · DM Sans (body) · Space Mono (labels/numbers)
@@ -72,8 +74,8 @@ All colors are defined as CSS variables in `:root` ([app/globals.css:8-34](app/g
 
 Colored glow shadows appear on hover, e.g. `0 0 24px rgba(59,184,168,0.4)` (teal) and `0 0 24px rgba(249,115,22,0.5)` (orange).
 
-### shadcn / Tailwind compatibility
-`--primary: oklch(0.85 0.15 55)`, plus `--foreground`, `--border-color`, and `--twc-*` aliases exist only so `components/ui/*` (shadcn) primitives render against the same tokens. Not part of the human-facing palette.
+### No shadcn layer
+There is none. `components.json`, the `.dark` block and the `--primary` / `--foreground` / `--border-color` / `--twc-*` aliases were deleted — nothing consumed them, and `.text-primary` had been compiling to an invalid nested `oklch(oklch(…))` that browsers discard.
 
 ---
 
@@ -86,7 +88,7 @@ Colored glow shadows appear on hover, e.g. `0 0 24px rgba(59,184,168,0.4)` (teal
 | `--font-sans` → `--font-karla` | **DM Sans** | `next/font/google` | 400 | Body, buttons, nav, paragraphs |
 | `--font-mono` | **Space Mono** | `next/font/google` | 400, 700 (+italic) | Labels, tags, numerals, badges |
 
-> The body-font CSS variable is named `--font-karla` for legacy reasons but **DM Sans** is what's actually loaded. `--font-sans` references it. (Tailwind's `font-sans` points at a non-existent `--font-inter` and is effectively unused — DM Sans wins via the global `body` rule.)
+> The body-font CSS variable is named `--font-karla` for legacy reasons but **DM Sans** is what's actually loaded; `--font-sans` references it. Tailwind is installed but barely used — the design lives in hand-written CSS in `globals.css`, so add to that rather than reaching for utility classes.
 
 `h1, h2, h3, h4` are globally set to `font-family: var(--font-heading); font-weight: 700` ([app/globals.css:76](app/globals.css#L76)).
 
@@ -97,13 +99,13 @@ Colored glow shadows appear on hover, e.g. `0 0 24px rgba(59,184,168,0.4)` (teal
 | Hero accent | Clash Display | inherit | 700 | — | `.hero-h1-accent` colored `--brand-deep` |
 | Section title | Clash Display | `clamp(26–40px)` | 700 | `-0.02em` | `.section-title`, line-height 1.1 |
 | CTA-box H2 | Clash Display | `clamp(30–60px)` | 700 | `-0.022em` | `.cta-h2`, white on dark |
-| Feature heading | Clash Display | `clamp(22–34px)` | 700 | `-0.018em` | `.feature-heading` |
 | Card title | DM Sans | 16–22px | 600–700 | `-0.2px` | service / audience / pricing cards |
+| Nav link | DM Sans | 15px | **500** | normal | `.nav-links a` — deliberately lighter than the CTA |
 | Hero sub | DM Sans | `clamp(17–19px)` | 700 | — | `.hero-sub`, color `#444` |
 | Body | DM Sans | 15–17px | 400 | normal | line-height 1.6–1.7 |
 | Section sub | DM Sans | 17–18px | 400 | normal | `.section-sub`, `--text-muted` |
-| Button | DM Sans | 15–16px | 500–700 | normal | `.btn` |
-| Mono label | Space Mono | 12px | 700 | `0.6–0.65px` | UPPERCASE — `.mono-label`, `.section-tag`, `.ticker-label` |
+| Button | DM Sans | 13–16px | 500–700 | normal | `.btn`; nav CTA 14px, `.btn-sm` 13px, `.btn-lg` 15px |
+| Mono label | Space Mono | 12px | 700 | `0.6–0.65px` | UPPERCASE — `.section-tag`, `.ticker-label` (`.mono-label` was removed, unused) |
 | Mono badge | Space Mono | 10–11px | 700 | `0.6–0.7px` | UPPERCASE — tags, eyebrows, step nums |
 | Stat number | DM Sans | `clamp(28–44px)` | 650 | `-1px` | `.stat-num`, accent span teal |
 
@@ -125,41 +127,49 @@ Base `.btn`: inline-flex, `gap 7px`, `padding 9px 22px`, `radius 8px` (`--radius
 | `.btn-primary` | **Split-fill sweep**: `linear-gradient(to right, #F97316 50%, #1a1a1a 50%)` at `200%` width, weight 700, 16px, white | Hover slides `background-position` right→left over 0.8s (orange wipes to black) + orange glow. On touch devices runs once via `cta-sweep-mobile` keyframe |
 | `.btn-ghost` | White, `--text-primary`, `1px solid --border-md`, no shadow | Hover `opacity .85` |
 | `.btn-dark-teal` | `#1a1a1a` bg, white, 700 | Hover → teal bg + teal glow |
-| `.btn-brand` | `--brand` bg, dark text | Hover `opacity .88` |
 
-Sizes: `.btn-sm` (6px 16px / 13px), `.btn-lg` (12px 28px / 15px). The sweep is re-asserted for nav, hero, problems, process, and lead CTAs.
+Sizes: `.btn-sm` (6px 16px / 13px), `.btn-lg` (12px 28px / 15px). **In the nav, `.btn-sm` is overridden to 9px 18px / 14px** so the CTA is not smaller than the links beside it. The sweep is re-asserted for hero, problems, process, and lead CTAs.
+
+> `.btn-brand` was removed — no markup referenced it.
 
 > Pricing & demo CTAs reuse the sweep but with a **teal→`#0d0d0d`** gradient instead of orange (`.p-action a`, `.demo-submit-wrap .btn-primary`), pairing the sweep mechanic with the brand color in conversion contexts.
 
-### Pills & badges
-`.pill` (full-round, 4px 12px, 13px): `.pill-green` (teal-light bg, deep-teal text), `.pill-neutral` (surface bg, muted, bordered). Mono eyebrow badges (`.lead-badge`, `.aud-tag`, `.cta-tag`) use Space Mono uppercase on `--brand-light` or transparent.
+### Badges
+Mono eyebrow badges (`.lead-badge`, `.cta-tag`) use Space Mono uppercase on `--brand-light` or transparent.
+
+> `.pill` / `.pill-green` / `.pill-neutral` and the audience cards' `.aud-tag` ("Segment 01–04") were removed — the pill classes were never referenced, the segment tags at the user's request.
 
 ### Cards
-- **Service card** (`.service-card`): white, `--border`, radius 24px, 32px pad, watermark mono numeral top-right, teal icon chip (`.svc-icon`, `--brand-light`), hover lifts border + shadow.
-- **Expandable service card** (`.svc-card`): colored ring/glow via `--svc-color`, `max-height` accordion body, `→` teal bullets, sweep CTA, "Learn more →" hint that fades when active.
-- **Audience card** (`.audience-card`): left accent border `rgba(var(--aud-color),…)`, skew-shimmer `::after` on hover.
+- **Expandable service card** (`.svc-card`): colored ring/glow via `--svc-color`, `max-height` accordion body, `→` teal bullets, sweep CTA, "Learn more →" hint that fades when active. Opens on hover (and keyboard focus) on pointer devices, on tap below `md`. ⚠️ `.svc-card-cta` must **not** be `white-space: nowrap` — see *Known constraints*.
+- **Audience card** (`.audience-card`): per-card hue in `--aud-color` (an `r,g,b` triplet) driving a **32% border at rest**, a 20%→transparent corner wash, a faint colored resting shadow, and a 60% border + 22% glow on hover, plus a skew-shimmer `::after`. Contrast over the wash where text sits is 5.0–5.3:1; re-measure if you strengthen it.
+
+> `.service-card` and its `.svc-icon` chip were removed — nothing rendered them; `.svc-card` is the live one.
 - **Problem card** (`.problem-card`): orange-tinted (`rgba(249,115,22,0.05)` bg, orange border), mono dash marker, red-orange skew shimmer on hover.
 - **Pricing card** (`.pricing-card`): white, radius 24px; hover → teal border + faint teal top-gradient + teal glow.
 - **Case-study hero card** (`.cs-hero-card`): 16px radius, 40px pad, slide in/out transitions; teal metric tiles, challenge label orange / solution label teal.
 - **Why-list item** (`.why-list li`): gradient-border wrapper that, on hover, runs a **conic-gradient spin** (`spin-ba`, `--ba` angle `@property`) around the card; teal check-draw SVG animation on reveal.
 
-### Inputs (demo form, [app/globals.css:1291-1321](app/globals.css#L1291-L1321))
+### Inputs (demo form)
 White, `1px solid --border-strong`, radius 8px, 10×14px pad, DM Sans 15px. Focus → teal border + `0 0 0 3px rgba(59,184,168,0.13)` ring. Custom SVG chevron on `.demo-select`.
 
-### Navigation ([app/globals.css:211-264](app/globals.css#L211-L264))
-Sticky white bar, hairline bottom border, 58px tall (54/50 on mobile). Center links DM Sans 15px/700, hover → teal-tinted bg. Right side: ghost + primary-sweep CTA. Hamburger + slide-down `.mobile-menu` below 900px. (Disabled aurora wash lives in `#nav::before`.)
+⚠️ **Bumped to 16px at ≤768px.** iOS Safari zooms the whole page when a focused control is under 16px. Do not "tidy" this back to 15px.
+
+### Navigation
+Sticky white bar, hairline bottom border, 58px tall (54/50 on mobile). Logo 24px. Center links DM Sans **15px/500**, hover → teal-tinted bg. Right side: `.btn-dark-teal.btn-sm` at 14px. Hamburger (44×44 touch target) + slide-down `.mobile-menu` below 900px; a ≤360px block tightens all three so they fit a 320px screen.
+
+The scale is deliberate: **logo → action → navigation**. Links were 700 — the same weight as the CTA — which made navigation shout as loudly as the action and crowd the logo.
 
 ### Footer
-`--surface` bg, 4-col grid (`1.6fr 1fr 1fr 1fr`), mono uppercase column headings, muted links → teal on hover, stacked single-column under 600px.
+`--surface` bg, 4-col grid (`2fr 1fr 1fr 1fr`), mono uppercase column headings, muted links → teal on hover, stacked single-column under 600px. The brand column is `2fr` so the tagline's first sentence (362px) fits on one line.
 
 ---
 
 ## 5. Layout & Spacing
 
 - **Container**: `max-width 1200px`, padding `0 32px` → 20px (≤768) → 16px (≤480).
-- **Sections**: `.section` 88px · `.section-sm` 56px · `.section-lg` 112px vertical; most `#id` sections use 88px, collapsing to 48–56px at ≤480px (see the mobile-polish block, [app/globals.css:1445-1523](app/globals.css#L1445-L1523)).
-- **Section header** pattern: mono `.section-tag` eyebrow → `.section-title` → `.section-sub`.
-- **Grids**: services 2-col, problems 3→2→1, process 5→3→1, pricing 3→1, stats 4→2, audience 2→1, feature/why/trust/faq two-column (`1fr 1fr` or `1fr 1.1fr`) → single column at 900px. `.feature-layout.flip` uses `direction: rtl` to swap column order.
+- **Sections**: `#id` sections use 88px vertical padding, collapsing to 48–56px at ≤480px (see the mobile-polish block at the foot of `globals.css`). The `.section` / `.section-sm` / `.section-lg` helper classes were removed — nothing used them.
+- **Section header** pattern: `.section-title` → `.section-sub`. ⚠️ The mono `.section-tag` eyebrow was **removed from all 12 homepage sections** at the user's request; it survives only on `/demo` (×2) and above the Why-section bullet list.
+- **Grids**: service cards 3→1 at 768px, problems 3→2→1, process 5→3→1, pricing 3→1, stats 4→2, audience 2→1, why/trust/faq two-column (`1fr 1fr` or `1fr 1.1fr`) → single column at 900px. `.feature-layout` and its `.flip` variant were removed.
 - **Hero**: `min-height: calc(100svh - navHeight)`, CSS-grid `1fr auto` so the client ticker always pins above the fold; centered content.
 
 ### Radius scale
@@ -182,7 +192,10 @@ Sticky white bar, hairline bottom border, 58px tall (54/50 on mobile). Center li
 - **Glow pulses**: `.cta-box::before/::after` radial teal glows breathe (`cta-glow-pulse`).
 - **Skew shimmers**: `.problem-card::after`, `.audience-card::after` sweep a light bar across on hover.
 - **Case-study slides**: `cs-enter` / `--exit` translate-X transitions between cases.
-- **Accessibility**: global `:focus-visible` = `2px solid --brand`; `prefers-reduced-motion` near-zeroes all animation/transition durations ([app/globals.css:1413-1416](app/globals.css#L1413-L1416)).
+- **FAQ accordion**: native `<details>` animated via `::details-content` + `interpolate-size: allow-keywords` on `:root`. ⚠️ `grid-template-rows: 0fr→1fr` does **not** work on `<details>` — it builds fine and snaps.
+- **Scroll progress bar**: `.scroll-progress`, a CSS scroll-driven animation (`animation-timeline: scroll(root block)`), no JS. Hidden via `@supports not` where unsupported.
+- **Anchor offset**: `html { scroll-padding-top: 72px }` so in-page links clear the sticky nav.
+- **Accessibility**: global `:focus-visible` = `2px solid --brand`; `prefers-reduced-motion` near-zeroes all animation/transition durations.
 
 ---
 
@@ -221,3 +234,34 @@ Sticky white bar, hairline bottom border, 58px tall (54/50 on mobile). Center li
 
 **Example prompt**
 > "TrustSenders card: white bg, `1px solid rgba(0,0,0,0.05)`, 24px radius, 32px pad, `rgba(0,0,0,0.03) 0 2px 4px` shadow. Title Clash Display 18px/700 `-0.2px`, body DM Sans 15px `#666` line-height 1.65. Mono uppercase eyebrow `#888` Space Mono 12px tracked 0.65px. Teal `#3BB8A8` icon chip on `#d1f0ec`. Primary button: split gradient `to right, #F97316 50%, #1a1a1a 50%` at 200% width, white DM Sans 700, 8px radius, sweep position right→left on hover with orange glow."
+
+---
+
+## 9. Known constraints
+
+Rules the layout depends on. Each was a real bug; the reason is here so the fix
+is not undone.
+
+- ⚠️ **No `white-space: nowrap` on wide text inside a grid.** `.svc-card-cta`
+  ("Request an Architecture Review", 276px) pinned the shared `1fr` track to
+  342px and made the page wider than any viewport under ~1080px — on a 320px
+  phone the browser then zooms the whole page out to compensate.
+- ⚠️ **Form controls stay ≥16px on mobile**, or iOS Safari zooms on focus.
+- ⚠️ **`<details>` does not animate with `grid-template-rows`.** Use
+  `::details-content` with `interpolate-size: allow-keywords`.
+- ⚠️ **The sticky nav needs `scroll-padding-top`**, or every in-page anchor
+  lands its target under the header.
+- ⚠️ **Tap fires `focus` before `click`.** Any card wired with both
+  `onFocus` (open) and `onClick` (toggle) can never open on touch — attach
+  focus/blur on pointer devices only.
+- ⚠️ **`trustsenders-logo.svg` sets its wordmark in live `<text>`.** An SVG
+  loaded via `<img>` cannot reach the page's webfonts, so the wordmark renders
+  in Helvetica/Arial rather than DM Sans. `textLength` keeps the width stable.
+  The proper fix is an outlined version of the logo.
+
+**Verified responsive floor:** no horizontal overflow across 4 pages × 10
+widths, 320px → 1440px. `body { overflow-x: hidden }` means overflow shows up
+as a zoomed-out page rather than a scrollbar — check
+`document.documentElement.scrollWidth` against the viewport rather than
+trusting your eyes. At 280px (Galaxy Fold cover) the layout is ~6px wide; the
+hero headline cannot fit "Deliverability" at its 42px minimum.
